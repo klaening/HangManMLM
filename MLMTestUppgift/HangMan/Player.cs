@@ -15,13 +15,26 @@ namespace HangMan
         //flera karaktärer
         private Regex validCharacters = new Regex("^[a-zA-Z0-9]+$");
 
-        public static void CreatePlayer(Player player)
+        public static void CreatePlayer(ref Player player)
         {
-            Console.Write("Enter player name: ");
-            string name = Console.ReadLine();
+            Console.WriteLine("\nName may contain letters and numbers\n");
 
-            player = SetName(name);
-            player.score = 0;
+            do
+            {
+                Console.Write("Enter player name: ");
+                string name = Console.ReadLine();
+
+                player = SetName(name);
+                player.score = 0;
+
+                if (player.name == null)
+                {
+                    Console.WriteLine("Error! Go die!\n");
+                }
+            } while (player.name == null);
+
+            Console.WriteLine("Player created!");
+            Console.WriteLine($"Player name: {player.name}, Score: {player.score}");
         }
 
         public static Player SetName(string name)
