@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace HangMan
 {
-    class Program
+    class Game
     {
-        static void Main(string[] args)
-        {
-            Player.CreatePlayer("Lollo4");
-        }
+
     }
 }
