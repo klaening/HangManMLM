@@ -10,7 +10,7 @@ namespace HangMan
     {
         static void Main(string[] args)
         {
-            Player.CreatePlayer("Lollo4");
+            Player.CreatePlayer();
         }
     }
 }

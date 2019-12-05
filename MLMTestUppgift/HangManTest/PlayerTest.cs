@@ -12,7 +12,7 @@ namespace HangManTest
             string name = "Lollo";
 
             // Act
-            Player player = Player.CreatePlayer(name);
+            Player player = Player.SetName(name);
 
             // Assert
             Assert.AreEqual(name, player.name);
@@ -25,7 +25,7 @@ namespace HangManTest
             string name = "/";
 
             // Act
-            Player player = Player.CreatePlayer(name);
+            Player player = Player.SetName(name);
 
             // Assert
             Assert.IsNull(player.name);
@@ -38,7 +38,7 @@ namespace HangManTest
             string name = "Lollo4";
 
             // Act
-            Player player = Player.CreatePlayer(name);
+            Player player = Player.SetName(name);
 
             // Assert
             Assert.AreEqual(name, player.name);
@@ -51,7 +51,7 @@ namespace HangManTest
             string name = "Lollo4*£";
 
             // Act
-            Player player = Player.CreatePlayer(name);
+            Player player = Player.SetName(name);
 
             // Assert
             Assert.IsNull(player.name);
@@ -64,7 +64,7 @@ namespace HangManTest
             string name = string.Empty;
 
             // Act
-            Player player = Player.CreatePlayer(name);
+            Player player = Player.SetName(name);
 
             // Assert
             Assert.IsNull(player.name);
@@ -77,7 +77,7 @@ namespace HangManTest
             string name = "Lollo 4";
 
             // Act
-            Player player = Player.CreatePlayer(name);
+            Player player = Player.SetName(name);
 
             // Assert
             Assert.IsNull(player.name);
