@@ -82,5 +82,18 @@ namespace HangManTest
             // Assert
             Assert.IsNull(player.name);
         }
+
+        [Test]
+        public void CreatePlayer_GivenWhiteSpace_ReturnsNull()
+        {
+            // Assign
+            string name = string.Empty;
+
+            // Act
+            Player player = Player.SetName(name);
+
+            // Assert
+            Assert.IsNull(player.name);
+        }
     }
 }

@@ -16,8 +16,10 @@ namespace HangMan
             Console.WriteLine("Welcome to Hang Man!");
 
             Player.CreatePlayer(ref player);
-            
-            Graphics.LetterContainers("hund");
+
+            string randomWord = GetWord();
+
+            Graphics.LetterContainers(randomWord);
             GuessLetter();
         }
 
@@ -44,8 +46,10 @@ namespace HangMan
                 {
                     if (!validCharacters.IsMatch(letter))
                     {
+                        Console.WriteLine();
                         Console.SetCursorPosition(0, Console.CursorTop);
                         Console.WriteLine("Error, invalid character!");
+                        //TO DO: set cursor ta bort error meddelande. sen en till set cursor en rad upp.
 
                         letter = string.Empty;
                     }

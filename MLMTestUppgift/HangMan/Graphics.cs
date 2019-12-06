@@ -6,12 +6,7 @@ namespace HangMan
     {
         internal static void LetterContainers(string randomWord)
         {
-            for (int i = 0; i < randomWord.Length; i++)
-            {
-                Console.Write("--  ");
-            }
 
-            Console.WriteLine();
         }
     }
 }
