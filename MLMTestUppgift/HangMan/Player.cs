@@ -11,7 +11,6 @@ namespace HangMan
     {
         string name;
         int score;
-        int guessesLeft = 10;
         //Säger att den ska ha ett start och ett slut alltså ett ord och inte bara att den innehåller nån av karaktärerna. + indikerar att man kan ha
         //flera karaktärer
         private Regex validCharacters = new Regex("^[a-zA-Z0-9]+$");
