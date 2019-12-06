@@ -18,9 +18,7 @@ namespace HangMan
             Player.CreatePlayer(ref player);
 
             //TO DO: implementera en metod som hämtar et random ord från en textfil.
-            string randomWord = "hun";
-
-            Graphics.LetterContainers(randomWord);
+            string randomWord = "hun";           
 
             bool gameOver = false;
             bool win = false;

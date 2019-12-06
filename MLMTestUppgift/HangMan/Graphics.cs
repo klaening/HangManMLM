@@ -15,11 +15,24 @@ namespace HangMan
             
         }
 
-        internal static void UpdateDisplay(List<char> letters)
+        internal static void UpdateDisplay(List<char> letters, string[] hiddenLetters)
         {
             Console.Clear();
             TenLivesLeft();
+            PrintHiddenLetters(hiddenLetters);
             GuessedLetters(letters);
+            ChangeHiddenLetters();
+        }
+
+        private static void PrintHiddenLetters(string[] hiddenLetters)
+        {
+            Console.Write("  ");
+            foreach (var letter in hiddenLetters)
+            {
+                Console.Write(letter + "  ");
+            }
+            Console.WriteLine("\n\n____________________");
+
         }
 
         static void GuessedLetters(List<char> letters)
@@ -28,7 +41,7 @@ namespace HangMan
             {
                 Console.Write(letter + "  ");
             }
-            Console.WriteLine();
+            Console.WriteLine("\n\n");
         }
 
         public static void EnterToStart()
