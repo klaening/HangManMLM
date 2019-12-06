@@ -9,11 +9,15 @@ namespace HangMan
 {
     public class Player
     {
-        public string name;
-        public int score;
+        string name;
+        int score;
         //Säger att den ska ha ett start och ett slut alltså ett ord och inte bara att den innehåller nån av karaktärerna. + indikerar att man kan ha
         //flera karaktärer
         private Regex validCharacters = new Regex("^[a-zA-Z0-9]+$");
+
+        public string Name { get; set; }
+
+        public int Score { get; set; }
 
         public static void CreatePlayer(ref Player player)
         {
@@ -35,6 +39,10 @@ namespace HangMan
 
             Console.WriteLine("Player created!");
             Console.WriteLine($"Player name: {player.name}, Score: {player.score}");
+
+            Console.WriteLine("Press enter to start game\n");
+
+            Graphics.EnterToStart();
         }
 
         public static Player SetName(string name)

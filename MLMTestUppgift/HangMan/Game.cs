@@ -17,54 +17,74 @@ namespace HangMan
 
             Player.CreatePlayer(ref player);
 
-            string randomWord = GetWord();
+            //TO DO: implementera en metod som hämtar et random ord från en textfil.
+            string randomWord = "hun";
 
             Graphics.LetterContainers(randomWord);
-            GuessLetter();
-        }
 
-        private static string GuessLetter()
-        {
-            Regex validCharacters = new Regex("^[a-zA-Z]$");
-
-            ConsoleKeyInfo info;
-            string letter = string.Empty;
-
-            Console.WriteLine("Choose a letter to guess");
+            bool gameOver = false;
+            bool win = false;
 
             do
             {
-                Console.SetCursorPosition(0, Console.CursorTop);
-
-                info = Console.ReadKey();
-
-                if (info.Key != ConsoleKey.Enter && info.Key != ConsoleKey.Escape)
+                string letter = Guess.Letter(ref win, ref gameOver, randomWord);
+                if (gameOver)
                 {
-                    letter = info.KeyChar.ToString();
+                    break;
                 }
-                else if (info.Key == ConsoleKey.Enter)
-                {
-                    if (!validCharacters.IsMatch(letter))
-                    {
-                        Console.WriteLine();
-                        Console.SetCursorPosition(0, Console.CursorTop);
-                        Console.WriteLine("Error, invalid character!");
-                        //TO DO: set cursor ta bort error meddelande. sen en till set cursor en rad upp.
 
-                        letter = string.Empty;
+                bool containsLetter = DoesWordContain(letter, randomWord);
+
+                string indexPlaces = ReturnIndexPlace(containsLetter, letter, randomWord);
+
+                Graphics.UpdateConsole(indexPlaces, letter, randomWord); 
+            } while (!gameOver);
+
+            WinOrLose(win);
+        }
+
+        private static void WinOrLose(bool win)
+        {
+            if (win)
+            {
+                Console.WriteLine("Win!");
+            }
+            else
+            {
+                Console.WriteLine("Lose!");
+            }
+        }
+
+        private static string ReturnIndexPlace(bool containsLetter, string aLetter, string word)
+        {
+            char letter = Convert.ToChar(aLetter);
+            string returnString = string.Empty;
+
+
+            if (containsLetter)
+            {
+                Console.WriteLine("Yes! The word contains this letter at index: ");
+
+                for (int i = 0; i < word.Length; i++)
+                {
+                    if (word[i] == letter)
+                    {
+                        Console.WriteLine(i);
+                        returnString += i + ",";
                     }
                 }
-                else if (info.Key == ConsoleKey.Escape)
-                {
-                    Console.WriteLine("Exiting game");
-                    System.Threading.Thread.Sleep(600);
-                    Environment.Exit(0);
-                }
-                
-            } while (info.Key != ConsoleKey.Enter && info.Key != ConsoleKey.Escape || letter == string.Empty);
+            }
+            else
+            {
+                Console.WriteLine("No, unfortunately not");
+            }
 
+            return returnString;
+        }
 
-            return letter;
+        private static bool DoesWordContain(string letter, string word)
+        {
+            return word.Contains(letter);
         }
     }
 }
