@@ -11,6 +11,7 @@ namespace HangMan
     {
         string name;
         int score;
+        int guessesLeft = 10;
         //Säger att den ska ha ett start och ett slut alltså ett ord och inte bara att den innehåller nån av karaktärerna. + indikerar att man kan ha
         //flera karaktärer
         private Regex validCharacters = new Regex("^[a-zA-Z0-9]+$");
@@ -33,14 +34,16 @@ namespace HangMan
 
                 if (player.name == null)
                 {
-                    Console.WriteLine("Error! Go die!\n");
+                    Console.WriteLine("Invalid player name\n");
                 }
             } while (player.name == null);
 
-            Console.WriteLine("Player created!");
-            Console.WriteLine($"Player name: {player.name}, Score: {player.score}");
+            Console.Clear();
 
-            Console.WriteLine("Press enter to start game\n");
+            Console.WriteLine("Player created!\n");
+            Console.WriteLine($"Player name: {player.name}");
+
+            Console.WriteLine("\nPress enter to start game");
 
             Graphics.EnterToStart();
         }
