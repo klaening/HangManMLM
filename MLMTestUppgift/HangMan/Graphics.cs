@@ -5,23 +5,46 @@ namespace HangMan
 {
     public class Graphics
     {
-        internal static void LetterContainers(string randomWord)
-        {
-
-        }
-
-        internal static void UpdateConsole(string indexPlaces, string letter, string randomWord)
-        {
-            
-        }
-
         internal static void UpdateDisplay(List<char> letters, string[] hiddenLetters)
         {
             Console.Clear();
             TenLivesLeft();
             PrintHiddenLetters(hiddenLetters);
             GuessedLetters(letters);
-            ChangeHiddenLetters();
+        }
+
+        internal static void InitialUpdate(string[] hiddenLetters)
+        {
+            Console.Clear();
+            TenLivesLeft();
+            PrintHiddenLetters(hiddenLetters);
+            Console.WriteLine("\n\n____________________");
+        }
+
+        public static void ChangeHiddenLetters(ref string[] hiddenLetters, string indexPlaces, string letter)
+        {
+            string[] indexString = indexPlaces.Split(',');
+            int[] indexInt = new int[indexString.Length];
+
+            if (indexPlaces != "")
+            {
+                for (int i = 0; i < indexInt.Length; i++)
+                {
+                    indexInt[i] = int.Parse(indexString[i]);
+                }
+
+                for (int i = 0; i < hiddenLetters.Length; i++)
+                {
+                    for (int j = 0; j < indexInt.Length; j++)
+                    {
+                        if (i == indexInt[j])
+                        {
+                            hiddenLetters[i] = letter;
+                            UpdateDisplay(Lists.guessedLetters, hiddenLetters);
+                        }
+                    }
+                }
+            }
         }
 
         private static void PrintHiddenLetters(string[] hiddenLetters)
@@ -32,7 +55,6 @@ namespace HangMan
                 Console.Write(letter + "  ");
             }
             Console.WriteLine("\n\n____________________");
-
         }
 
         static void GuessedLetters(List<char> letters)

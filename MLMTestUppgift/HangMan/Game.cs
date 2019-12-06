@@ -18,10 +18,14 @@ namespace HangMan
             Player.CreatePlayer(ref player);
 
             //TO DO: implementera en metod som hämtar et random ord från en textfil.
-            string randomWord = "hun";           
+            string randomWord = "mamma";
+
+            string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);
 
             bool gameOver = false;
             bool win = false;
+
+            Graphics.InitialUpdate(hiddenLetters);
 
             do
             {
@@ -35,7 +39,9 @@ namespace HangMan
 
                 string indexPlaces = ReturnIndexPlace(containsLetter, letter, randomWord);
 
-                Graphics.UpdateConsole(indexPlaces, letter, randomWord); 
+                Graphics.UpdateDisplay(Lists.guessedLetters, hiddenLetters);
+                Graphics.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+
             } while (!gameOver);
 
             WinOrLose(win);
@@ -61,20 +67,20 @@ namespace HangMan
 
             if (containsLetter)
             {
-                Console.WriteLine("Yes! The word contains this letter at index: ");
-
                 for (int i = 0; i < word.Length; i++)
                 {
                     if (word[i] == letter)
                     {
-                        Console.WriteLine(i);
-                        returnString += i + ",";
+                        if (returnString == "")
+                        {
+                            returnString = i.ToString();
+                        }
+                        else
+                        {
+                            returnString += "," + i;
+                        }
                     }
                 }
-            }
-            else
-            {
-                Console.WriteLine("No, unfortunately not");
             }
 
             return returnString;

@@ -12,13 +12,12 @@ namespace HangMan
         
         public static string Letter(ref bool win, ref bool gameOver, string word)
         {
-            string[] hiddenLetters = Lists.CreateHiddenWordArray(word);
             Regex validCharacters = new Regex("^[a-zA-Z]$");
 
             ConsoleKeyInfo info;
             string letter = string.Empty;
 
-            Graphics.UpdateDisplay(Lists.guessedLetters, hiddenLetters);
+            //Graphics.UpdateDisplay(Lists.guessedLetters, hiddenLetters, );
 
             Console.WriteLine("Choose a letter to guess");
 
