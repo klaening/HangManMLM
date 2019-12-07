@@ -19,5 +19,15 @@ namespace HangMan.Helpers
             Console.Write("                         ");
             Console.SetCursorPosition(0, Console.CursorTop);
         }
+
+        public static void PlayerNameInfoMessage()
+        {
+            Colors.Grey("[Name may contain letters and numbers]");
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.ReadKey();
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write("                                       ");
+            Console.SetCursorPosition(0, Console.CursorTop);
+        }
     }
 }

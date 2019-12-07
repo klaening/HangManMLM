@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace HangMan
 {
+    /// <summary>
+    /// Byta namn till Display???
+    /// </summary>
     public static class Graphics
     {
         internal static void UpdateDisplay(List<char> letters, string[] hiddenLetters)

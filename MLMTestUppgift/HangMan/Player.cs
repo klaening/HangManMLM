@@ -21,11 +21,14 @@ namespace HangMan
 
         public static void CreatePlayer(ref Player player)
         {
-            Helpers.Colors.Grey("\n[Name may contain letters and numbers]\n\n");
+            Console.WriteLine("[Create Player]\n");
+
+            Console.WriteLine("Enter player name");
+
+            Helpers.Messages.PlayerNameInfoMessage();
 
             do
             {
-                Console.WriteLine("Enter player name");
                 string name = Console.ReadLine();
 
                 player = SetName(name);
@@ -34,16 +37,18 @@ namespace HangMan
                 if (player.name == null)
                 {
                     Helpers.Messages.ErrorMessage("Invalid name");
-                    Console.SetCursorPosition(0, Console.CursorTop - 1);
                 }
             } while (player.name == null);
 
+            Helpers.Colors.Green("\n~*Player created!*~\n");
+            System.Threading.Thread.Sleep(800);
             Console.Clear();
 
-            Console.WriteLine("Player created!\n");
-            Console.WriteLine($"Player name: {player.name}");
+            Console.WriteLine($"Welcome {player.name}!");
+            Console.WriteLine($"Your score: {player.score}");
 
-            Console.WriteLine("\nPress enter to start game");
+
+            Helpers.Colors.Grey("\nPress enter to start game");
 
             Graphics.EnterToStart();
         }
