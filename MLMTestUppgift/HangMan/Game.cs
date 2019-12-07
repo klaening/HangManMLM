@@ -13,12 +13,10 @@ namespace HangMan
         {
             Player player = new Player();
 
-
-            GFX.ASCII.WelcomeScreen();
-
             Player.CreatePlayer(ref player);
 
             //TO DO: implementera en metod som hämtar et random ord från en textfil.
+            //TO DO: orden får inte vara större än 15 karaktärer
             string randomWord = "mamma";
 
             string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);
@@ -26,7 +24,7 @@ namespace HangMan
             bool gameOver = false;
             bool win = false;
 
-            Graphics.InitialUpdate(hiddenLetters);
+            Display.InitialUpdate(hiddenLetters);
 
             do
             {
@@ -42,8 +40,8 @@ namespace HangMan
 
                 string indexPlaces = ReturnIndexPlace(containsLetter, letter, randomWord);
 
-                Graphics.UpdateDisplay(Lists.guessedLetters, hiddenLetters);
-                Graphics.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+                Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters);
+                Display.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
 
             } while (!gameOver);
 
@@ -64,6 +62,7 @@ namespace HangMan
             }
         }
 
+        //Sätta denna metod i en egen klass för alla ord?
         private static string ReturnIndexPlace(bool containsLetter, string aLetter, string word)
         {
             char letter = Convert.ToChar(aLetter);

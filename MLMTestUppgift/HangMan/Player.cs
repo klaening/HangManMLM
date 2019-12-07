@@ -47,10 +47,9 @@ namespace HangMan
             Console.WriteLine($"Welcome {player.name}!");
             Console.WriteLine($"Your score: {player.score}");
 
-
             Helpers.Colors.Grey("\nPress enter to start game");
 
-            Graphics.EnterToStart();
+            Display.EnterToStart();
         }
 
         public static Player SetName(string name)
@@ -69,16 +68,5 @@ namespace HangMan
         {
 
         }
-
-        //public Player(string aName)
-        //{
-        //    name = aName;
-        //}
-
-        //public Player(string aName, int aScore)
-        //{
-        //    name = aName;
-        //    score = aScore;
-        //}
     }
 }

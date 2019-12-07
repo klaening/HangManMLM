@@ -21,7 +21,7 @@ namespace HangMan
 
             do
             {
-                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write("\b");
 
                 info = Console.ReadKey();
 

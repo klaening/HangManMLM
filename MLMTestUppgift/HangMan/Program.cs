@@ -10,6 +10,8 @@ namespace HangMan
     {
         static void Main(string[] args)
         {
+            GFX.ASCII.WelcomeScreen();
+
             Game.StartGame();
         }
     }

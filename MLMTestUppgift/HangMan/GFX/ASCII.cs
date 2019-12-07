@@ -12,9 +12,9 @@ namespace HangMan.GFX
         {
             Console.SetWindowSize(153, 30);
 
-            Console.WriteLine(@"
+            Helpers.Colors.Grey(@"
  HHHHHHHHH     HHHHHHHHH                                                             MMMMMMMM               MMMMMMMM                          
- H:::::::H     H:::::::H                     Welcome to                              M:::::::M             M:::::::M                           
+ H:::::::H     H:::::::H                     "); Console.Write("Welcome to"); Helpers.Colors.Grey(@"                              M:::::::M             M:::::::M                           
  H:::::::H     H:::::::H                                                             M::::::::M           M::::::::M                                 
  HH::::::H     H::::::HH                                                             M:::::::::M         M:::::::::M                                
    H:::::H     H:::::H    aaaaaaaaaaaaa   nnnn  nnnnnnnn       ggggggggg   ggggg     M::::::::::M       M::::::::::M  aaaaaaaaaaaaa   nnnn  nnnnnnnn    
@@ -31,7 +31,7 @@ namespace HangMan.GFX
  HHHHHHHHH     HHHHHHHHH  aaaaaaaaaa  aaaa  nnnnnn    nnnnnn    gggggggg::::::g      MMMMMMMM               MMMMMMMM  aaaaaaaaaa  aaaa  nnnnnn    nnnnnn
                                                                         g:::::g                                                                      
                                                             gggggg      g:::::g                                                                       
-                                                            g:::::gg   gg:::::g                Created by: Mattis, Lorin and Mikael               
+                                                            g:::::gg   gg:::::g                "); Console.Write("Created by: Mattis, Lorin and Mikael"); Helpers.Colors.Grey(@"               
                                                              g::::::ggg:::::::g                                                                      
                                                               gg:::::::::::::g                                                                         
                                                                 ggg::::::ggg                                                                            
@@ -40,9 +40,74 @@ namespace HangMan.GFX
 ");
 Helpers.Colors.Green("                                                                    Press Enter to start");
 
-            Graphics.EnterToStart();
+            Display.EnterToStart();
             Console.Clear();
-            Console.SetWindowSize(60, 30);
+            Console.SetWindowSize(44, 25);
+        }
+
+        public static void TenLivesLeft()
+        {
+            Console.WriteLine(@"
+
+
+
+
+
+
+
+
+
+
+
+");
+        }
+        public static void NineLivesLeft()
+        {
+            Console.WriteLine(@"
+
+
+
+
+
+
+
+
+        ____________________________
+     __/                            \__
+  __/                                  \__
+");
+        }
+        public static void EightLivesLeft()
+        {
+            Console.WriteLine(@"
+                __
+               |  |       
+               |  |       
+               |  |       
+               |  |       
+               |  |       
+               |  |       
+               |  |       
+        _______|__|_________________
+     __/                            \__
+  __/                                  \__
+");
+        }
+        public static void ZeroLivesLeft()
+        {
+            Console.WriteLine(@"
+                __ ________
+               |  |________| 
+               |  | //    |
+               |  |//     |
+               |  |/      Q
+               |  |      /[]\
+               |  |       /\             
+               |  |       
+        _______|__|_________________
+     __/                            \__
+  __/                                  \__
+");
         }
     }
 }

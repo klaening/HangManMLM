@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="GFX\ASCII.cs" />
-    <Compile Include="Graphics.cs" />
+    <Compile Include="Display.cs" />
     <Compile Include="Guess.cs" />
     <Compile Include="Helpers\Colors.cs" />
     <Compile Include="Helpers\Messages.cs" />

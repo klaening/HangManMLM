@@ -3,15 +3,12 @@ using System.Collections.Generic;
 
 namespace HangMan
 {
-    /// <summary>
-    /// Byta namn till Display???
-    /// </summary>
-    public static class Graphics
+    public static class Display
     {
         internal static void UpdateDisplay(List<char> letters, string[] hiddenLetters)
         {
             Console.Clear();
-            TenLivesLeft();
+            GFX.ASCII.ZeroLivesLeft();
             PrintHiddenLetters(hiddenLetters);
             GuessedLetters(letters);
         }
@@ -19,9 +16,9 @@ namespace HangMan
         internal static void InitialUpdate(string[] hiddenLetters)
         {
             Console.Clear();
-            TenLivesLeft();
+            GFX.ASCII.TenLivesLeft();
             PrintHiddenLetters(hiddenLetters);
-            Console.WriteLine("\n\n____________________");
+            Console.WriteLine("\n\n");
         }
 
         public static void ChangeHiddenLetters(ref string[] hiddenLetters, string indexPlaces, string letter)
@@ -52,16 +49,18 @@ namespace HangMan
 
         private static void PrintHiddenLetters(string[] hiddenLetters)
         {
-            Console.Write("  ");
+            StartPrintingFrom(hiddenLetters);
+
             foreach (var letter in hiddenLetters)
             {
                 Console.Write(letter + "  ");
             }
-            Console.WriteLine("\n\n____________________");
+            Helpers.Colors.Grey("\n\n____________________________________________\n");
         }
 
         static void GuessedLetters(List<char> letters)
         {
+            Console.Write("  ");
             foreach (var letter in letters)
             {
                 Console.Write(letter + "  ");
@@ -69,82 +68,39 @@ namespace HangMan
             Console.WriteLine("\n\n");
         }
 
+        public static void StartPrintingFrom(string[] word)
+        {
+            Console.SetCursorPosition(21, Console.CursorTop);
+
+            int ctr = 0;
+
+            foreach (var letter in word)
+            {
+                Console.Write("\b");
+                ctr++;
+
+                if (word.Length > 5 && ctr % 3 == 0)
+                {
+                    Console.Write("\b");
+                }
+            }
+
+            if (word.Length >= 14)
+            {
+                Console.Write("\b");
+            }
+        }
+
         public static void EnterToStart()
         {
-            ConsoleKeyInfo info = new ConsoleKeyInfo();
+            ConsoleKeyInfo info;
 
             do
             {
                 info = Console.ReadKey();
-                Console.SetCursorPosition(0, Console.CursorTop);
-                Console.Write(" ");
-                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write("\b \b");
+
             } while (info.Key != ConsoleKey.Enter);
-        }
-
-        static void TenLivesLeft()
-        {
-            Console.WriteLine(@"
-
-
-
-
-
-
-
-
-
-
-
-");
-        }
-        static void NineLivesLeft()
-        {
-            Console.WriteLine(@"
-
-
-
-
-
-
-
-
-      ____________________________
-   __/                            \__
-__/                                  \__
-");
-        }
-        static void EightLivesLeft()
-        {
-            Console.WriteLine(@"
-              __
-             |  |       
-             |  |       
-             |  |       
-             |  |       
-             |  |       
-             |  |       
-             |  |       
-      _______|__|_________________
-   __/                            \__
-__/                                  \__
-");
-        }
-        static void ZeroLivesLeft()
-        {
-            Console.WriteLine(@"
-              __ ________
-             |  |________| 
-             |  | //    |
-             |  |//     |
-             |  |/      Q
-             |  |      /[]\
-             |  |       /\             
-             |  |       
-      _______|__|_________________
-   __/                            \__
-__/                                  \__
-");
         }
     }
 }
