@@ -28,7 +28,7 @@ namespace HangManTest
             Player player = Player.SetName(name);
 
             // Assert
-            Assert.IsNull(player.name);
+            Assert.IsNull(player.Name);
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace HangManTest
             Player player = Player.SetName(name);
 
             // Assert
-            Assert.IsNull(player.name);
+            Assert.IsNull(player.Name);
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace HangManTest
             Player player = Player.SetName(name);
 
             // Assert
-            Assert.IsNull(player.name);
+            Assert.IsNull(player.Name);
         }
 
         [Test]
@@ -80,7 +80,7 @@ namespace HangManTest
             Player player = Player.SetName(name);
 
             // Assert
-            Assert.IsNull(player.name);
+            Assert.IsNull(player.Name);
         }
 
         [Test]
@@ -93,7 +93,7 @@ namespace HangManTest
             Player player = Player.SetName(name);
 
             // Assert
-            Assert.IsNull(player.name);
+            Assert.IsNull(player.Name);
         }
     }
 }

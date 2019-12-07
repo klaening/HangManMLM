@@ -17,8 +17,6 @@ namespace HangMan
             ConsoleKeyInfo info;
             string letter = string.Empty;
 
-            //Graphics.UpdateDisplay(Lists.guessedLetters, hiddenLetters, );
-
             Console.WriteLine("Choose a letter to guess");
 
             do
@@ -37,7 +35,6 @@ namespace HangMan
                     {
                         Console.WriteLine();
                         Console.WriteLine("Error, invalid character!");
-                        //TO DO: set cursor ta bort error meddelande. sen en till set cursor en rad upp.
 
                         Console.ReadKey();
                         Console.SetCursorPosition(0, Console.CursorTop - 1);
