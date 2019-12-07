@@ -13,7 +13,8 @@ namespace HangMan
         {
             Player player = new Player();
 
-            Console.WriteLine("Welcome to Hang Man!");
+
+            GFX.ASCII.WelcomeScreen();
 
             Player.CreatePlayer(ref player);
 

@@ -25,7 +25,7 @@ namespace HangMan
 
             do
             {
-                Console.Write("Enter player name: ");
+                Console.WriteLine("Enter player name");
                 string name = Console.ReadLine();
 
                 player = SetName(name);
@@ -33,9 +33,8 @@ namespace HangMan
 
                 if (player.name == null)
                 {
-                    //Gör om till ErrorMessage() som tar in meddelande som argument
-                    Helpers.Colors.Red("Invalid player name\n");
-                    System.Threading.Thread.Sleep(400);
+                    Helpers.Messages.ErrorMessage("Invalid name");
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
                 }
             } while (player.name == null);
 

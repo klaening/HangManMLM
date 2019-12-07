@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HangMan
 {
-    public class Graphics
+    public static class Graphics
     {
         internal static void UpdateDisplay(List<char> letters, string[] hiddenLetters)
         {

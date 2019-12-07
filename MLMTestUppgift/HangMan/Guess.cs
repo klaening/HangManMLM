@@ -34,15 +34,7 @@ namespace HangMan
                     if (!validCharacters.IsMatch(letter))
                     {
                         Console.WriteLine();
-                        Helpers.Colors.Red("Invalid character!\n");
-                        System.Threading.Thread.Sleep(400);
-                        //Gör om till metod ErrorMessage() som tar in text som argument
-
-                        Console.SetCursorPosition(0, Console.CursorTop - 1);
-                        Console.Write("                         ");
-                        Console.SetCursorPosition(0, Console.CursorTop - 1);
-                        Console.Write(" ");
-                        Console.SetCursorPosition(0, Console.CursorTop);
+                        Helpers.Messages.ErrorMessage("Invalid character!");
 
                         letter = string.Empty;
                     }
