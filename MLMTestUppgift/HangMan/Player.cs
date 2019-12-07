@@ -21,7 +21,7 @@ namespace HangMan
 
         public static void CreatePlayer(ref Player player)
         {
-            Console.WriteLine("\n[Name may contain letters and numbers]\n");
+            Helpers.Colors.Grey("\n[Name may contain letters and numbers]\n\n");
 
             do
             {
@@ -33,7 +33,9 @@ namespace HangMan
 
                 if (player.name == null)
                 {
-                    Console.WriteLine("Invalid player name\n");
+                    //Gör om till ErrorMessage() som tar in meddelande som argument
+                    Helpers.Colors.Red("Invalid player name\n");
+                    System.Threading.Thread.Sleep(400);
                 }
             } while (player.name == null);
 

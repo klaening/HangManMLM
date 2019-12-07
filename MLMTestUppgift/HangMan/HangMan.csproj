@@ -46,6 +46,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="Graphics.cs" />
     <Compile Include="Guess.cs" />
+    <Compile Include="Helpers\Colors.cs" />
     <Compile Include="Lists.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

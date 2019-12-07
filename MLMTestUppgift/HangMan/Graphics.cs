@@ -88,6 +88,11 @@ namespace HangMan
 
 
 
+
+
+
+
+
 ");
         }
         static void NineLivesLeft()
@@ -99,8 +104,44 @@ namespace HangMan
 
 
 
+
+
+      ____________________________
+   __/                            \__
+__/                                  \__
 ");
         }
-
+        static void EightLivesLeft()
+        {
+            Console.WriteLine(@"
+              __
+             |  |       
+             |  |       
+             |  |       
+             |  |       
+             |  |       
+             |  |       
+             |  |       
+      _______|__|_________________
+   __/                            \__
+__/                                  \__
+");
+        }
+        static void ZeroLivesLeft()
+        {
+            Console.WriteLine(@"
+              __ ________
+             |  |________| 
+             |  | //    |
+             |  |//     |
+             |  |/      Q
+             |  |      /[]\
+             |  |       /\             
+             |  |       
+      _______|__|_________________
+   __/                            \__
+__/                                  \__
+");
+        }
     }
 }
