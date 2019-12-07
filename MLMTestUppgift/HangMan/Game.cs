@@ -52,10 +52,12 @@ namespace HangMan
             if (win)
             {
                 Console.WriteLine("Win!");
+                //Player får poäng beroende på hur snabbt hen gissade rätt
             }
             else
             {
                 Console.WriteLine("Lose!");
+                //Player förlorar spelet och den poäng man har lagras som playerns high score
             }
         }
 

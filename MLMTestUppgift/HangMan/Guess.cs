@@ -40,11 +40,11 @@ namespace HangMan
                         //TO DO: set cursor ta bort error meddelande. sen en till set cursor en rad upp.
 
                         Console.ReadKey();
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        Console.Write("                         ");
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        Console.Write(" ");
                         Console.SetCursorPosition(0, Console.CursorTop);
-                        Console.WriteLine(" ");
-                        Console.SetCursorPosition(0, Console.CursorTop - 2);
-                        Console.WriteLine("                         ");
-                        Console.SetCursorPosition(0, Console.CursorTop - 2);
 
                         letter = string.Empty;
                     }
@@ -56,7 +56,9 @@ namespace HangMan
                 else if (info.Key == ConsoleKey.Escape)
                 {
                     letter = "esc";
-                    if (Word(ref gameOver, word))
+                    Console.SetCursorPosition(0, Console.CursorTop);
+
+                    if (Guess.Word(ref gameOver, word))
                         win = true;
                     else
                         win = false;
