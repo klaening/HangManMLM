@@ -81,29 +81,132 @@ Helpers.Colors.Green("                                                          
         {
             Console.WriteLine(@"
                 __
-               |  |       
-               |  |       
-               |  |       
-               |  |       
-               |  |       
-               |  |       
-               |  |       
+               |  |
+               |  |
+               |  |
+               |  |
+               |  |
+               |  |
+               |  |
         _______|__|_________________
      __/                            \__
   __/                                  \__
 ");
         }
-        public static void ZeroLivesLeft()
+
+        public static void SevenLivesLeft()
         {
             Console.WriteLine(@"
                 __ ________
-               |  |________| 
+               |  |________|
+               |  |
+               |  |
+               |  |
+               |  |
+               |  |
+               |  |
+        _______|__|_________________
+     __/                            \__
+  __/                                  \__
+");
+        }
+
+        public static void SixLivesLeft()
+        {
+            Console.WriteLine(@"
+                __ ________
+               |  |________|
+               |  | //
+               |  |//
+               |  |/
+               |  |
+               |  |
+               |  |
+        _______|__|_________________
+     __/                            \__
+  __/                                  \__
+");
+        }
+
+        public static void FiveLivesLeft()
+        {
+            Console.WriteLine(@"
+                __ ________
+               |  |________|
+               |  | //    |
+               |  |//     |
+               |  |/
+               |  |
+               |  |
+               |  |
+        _______|__|_________________
+     __/                            \__
+  __/                                  \__
+");
+        }
+
+        public static void FourLivesLeft()
+        {
+            Console.WriteLine(@"
+                __ ________
+               |  |________|
+               |  | //    |
+               |  |//     |
+               |  |/      Q
+               |  |
+               |  |
+               |  |
+        _______|__|_________________
+     __/                            \__
+  __/                                  \__
+");
+        }
+
+        public static void ThreeLivesLeft()
+        {
+            Console.WriteLine(@"
+                __ ________
+               |  |________|
+               |  | //    |
+               |  |//     |
+               |  |/      Q
+               |  |       []
+               |  |
+               |  |
+        _______|__|_________________
+     __/                            \__
+  __/                                  \__
+");
+        }
+
+        public static void OneLifeLeft()
+        {
+            Console.WriteLine(@"
+                __ ________
+               |  |________|
                |  | //    |
                |  |//     |
                |  |/      Q
                |  |      /[]\
-               |  |       /\             
-               |  |       
+               |  |
+               |  |
+        _______|__|_________________
+     __/                            \__
+  __/                                  \__
+");
+        }
+
+        public static void ZeroLivesLeft()
+        {
+            Console.WriteLine(@"
+                __ ________
+               |  |________|
+               |  | //    |
+               |  |//     |
+               |  |/      Q
+               |  |      /[]\
+               |  |       /\
+               |  |
         _______|__|_________________
      __/                            \__
   __/                                  \__
