@@ -11,6 +11,7 @@ namespace HangMan.GFX
         public static void WelcomeScreen()
         {
             Console.SetWindowSize(153, 30);
+            Console.Title = "Hangman by MLM Productions";
 
             Helpers.Colors.Grey(@"
  HHHHHHHHH     HHHHHHHHH                                                             MMMMMMMM               MMMMMMMM                          

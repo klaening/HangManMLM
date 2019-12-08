@@ -21,6 +21,8 @@ namespace HangMan
 
         public static void CreatePlayer(ref Player player)
         {
+            Console.Title = "Create Player";
+
             Console.WriteLine("[Create Player]\n");
 
             Console.WriteLine("Enter player name");
@@ -45,7 +47,11 @@ namespace HangMan
             Console.Clear();
 
             Console.WriteLine($"Welcome {player.name}!");
+            //TO DO: huvudmeny? Kunna kolla top 10
+            Console.WriteLine("______________________\n");
             Console.WriteLine($"Your score: {player.score}");
+            Console.WriteLine("______________________\n");
+            Console.WriteLine($"Your high score: ");
 
             Helpers.Colors.Grey("\nPress enter to start game");
 

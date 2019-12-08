@@ -8,6 +8,7 @@ namespace HangMan
         internal static void UpdateDisplay(List<char> letters, string[] hiddenLetters)
         {
             Console.Clear();
+            //TO DO: switch case för olika metoder eller ha det i en egen metod? Isf måste UpdateDisplay ta in player som argument.
             GFX.ASCII.ZeroLivesLeft();
             PrintHiddenLetters(hiddenLetters);
             GuessedLetters(letters);
