@@ -14,19 +14,29 @@ namespace HangMan.Helpers
             System.Threading.Thread.Sleep(400);
 
             Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write("                         ");
+            for (int i = 0; i <= message.Length; i++)
+            {
+                Console.Write(" ");
+            }
+
             Console.SetCursorPosition(0, Console.CursorTop - 1);
             Console.Write("                         ");
+
             Console.SetCursorPosition(0, Console.CursorTop);
         }
 
-        public static void PlayerNameInfoMessage()
+        public static void PlayerNameInfoMessage(string message)
         {
-            Colors.Grey("[Name may contain letters and numbers]");
+            Colors.Grey(message);
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.ReadKey();
+
             Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write("                                       ");
+            for (int i = 0; i < message.Length; i++)
+            {
+                Console.Write(" ");
+            }
+
             Console.SetCursorPosition(0, Console.CursorTop);
         }
     }

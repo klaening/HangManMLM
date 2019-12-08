@@ -36,6 +36,7 @@ namespace HangMan
 
                 //Metod som kollar ifall man har gissat på bokstaven redan. Returnerar bool. Sätt följande metoder i en if
 
+                //Kan vi slänga in detta i ReturnIndexPlace()? En kodrad som vi kan få plats med
                 bool containsLetter = DoesWordContain(letter, randomWord);
 
                 string indexPlaces = ReturnIndexPlace(containsLetter, letter, randomWord);
