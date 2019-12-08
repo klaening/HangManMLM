@@ -34,8 +34,6 @@ namespace HangMan
                     break;
                 }
 
-                //Metod som kollar ifall man har gissat på bokstaven redan. Returnerar bool. Sätt följande metoder i en if
-
                 //Kan vi slänga in detta i ReturnIndexPlace()? En kodrad som vi kan få plats med
                 bool containsLetter = DoesWordContain(letter, randomWord);
 
@@ -43,6 +41,7 @@ namespace HangMan
 
                 Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters);
                 Display.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+                //TO DO: om hiddenLetters inte innehåller '_' så har man gissat rätt på ordet.
 
             } while (!gameOver);
 
