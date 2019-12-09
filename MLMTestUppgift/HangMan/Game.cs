@@ -17,7 +17,7 @@ namespace HangMan
 
             //TO DO: implementera en metod som hämtar et random ord från en textfil.
             //TO DO: orden får inte vara större än 15 karaktärer
-            string randomWord = "mamma";
+            string randomWord = Words.GetRandomWord();
 
             string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);
 
@@ -34,14 +34,14 @@ namespace HangMan
                     break;
                 }
 
-                //Metod som kollar ifall man har gissat på bokstaven redan. Returnerar bool. Sätt följande metoder i en if
-
+                //Kan vi slänga in detta i ReturnIndexPlace()? En kodrad som vi kan få plats med
                 bool containsLetter = DoesWordContain(letter, randomWord);
 
                 string indexPlaces = ReturnIndexPlace(containsLetter, letter, randomWord);
 
                 Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters);
                 Display.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+                //TO DO: om hiddenLetters inte innehåller '_' så har man gissat rätt på ordet.
 
             } while (!gameOver);
 

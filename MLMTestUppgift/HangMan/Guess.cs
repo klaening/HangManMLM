@@ -31,6 +31,9 @@ namespace HangMan
                 }
                 else if (info.Key == ConsoleKey.Enter)
                 {
+                    //Stoppa detta i en egen metod? Förslag: CheckLetter(letter)
+                    //Skapa isf RegEx i den metoden
+                    //Gör koden mer läsbar också med att vi kommer ha mer kod i else senare
                     if (!validCharacters.IsMatch(letter))
                     {
                         Console.WriteLine();
@@ -39,9 +42,13 @@ namespace HangMan
                         letter = string.Empty;
                     }
                     else
-                    {                        
+                    {
+                        //TO DO: Kod som kollar om bokstaven redan finns i listan
                         Lists.guessedLetters.Add(Convert.ToChar(letter));
+                        //TO DO: Felmeddelande
+                        //TO DO: Sätt letter till string.Empty
                     }
+                    //
                 }
                 else if (info.Key == ConsoleKey.Escape)
                 {
@@ -61,6 +68,7 @@ namespace HangMan
 
         private static bool Word(ref bool gameOver, string word)
         {
+            //Tänka om med det här?
             Console.Write("Take a guess: ");
             string guess = Console.ReadLine();
 

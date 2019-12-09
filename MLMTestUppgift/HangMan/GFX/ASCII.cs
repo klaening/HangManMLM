@@ -11,6 +11,7 @@ namespace HangMan.GFX
         public static void WelcomeScreen()
         {
             Console.SetWindowSize(153, 30);
+            Console.Title = "Hangman by MLM Productions";
 
             Helpers.Colors.Grey(@"
  HHHHHHHHH     HHHHHHHHH                                                             MMMMMMMM               MMMMMMMM                          
@@ -135,7 +136,7 @@ Helpers.Colors.Green("                                                          
                |  |________|
                |  | //    |
                |  |//     |
-               |  |/
+               |  |/      Q
                |  |
                |  |
                |  |
@@ -153,7 +154,7 @@ Helpers.Colors.Green("                                                          
                |  | //    |
                |  |//     |
                |  |/      Q
-               |  |
+               |  |       []
                |  |
                |  |
         _______|__|_________________
@@ -170,8 +171,25 @@ Helpers.Colors.Green("                                                          
                |  | //    |
                |  |//     |
                |  |/      Q
-               |  |       []
+               |  |      /[] 
+               |  |     ´
                |  |
+        _______|__|_________________
+     __/                            \__
+  __/                                  \__
+");
+        }
+
+        public static void TwoLivesLeft()
+        {
+            Console.WriteLine(@"
+                __ ________
+               |  |________|
+               |  | //    |
+               |  |//     |
+               |  |/      Q
+               |  |      /[]\
+               |  |     ´    `
                |  |
         _______|__|_________________
      __/                            \__
@@ -188,8 +206,8 @@ Helpers.Colors.Green("                                                          
                |  |//     |
                |  |/      Q
                |  |      /[]\
-               |  |
-               |  |
+               |  |     ´ |  `
+               |  |       '
         _______|__|_________________
      __/                            \__
   __/                                  \__
@@ -205,8 +223,8 @@ Helpers.Colors.Green("                                                          
                |  |//     |
                |  |/      Q
                |  |      /[]\
-               |  |       /\
-               |  |
+               |  |     ´ || `
+               |  |       ''
         _______|__|_________________
      __/                            \__
   __/                                  \__

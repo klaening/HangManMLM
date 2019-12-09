@@ -21,18 +21,19 @@ namespace HangMan
 
         public static void CreatePlayer(ref Player player)
         {
+            Console.Title = "Create Player";
+
             Console.WriteLine("[Create Player]\n");
 
             Console.WriteLine("Enter player name");
 
-            Helpers.Messages.PlayerNameInfoMessage();
+            Helpers.Messages.PlayerNameInfoMessage("[Name may contain letters and numbers]");
 
             do
             {
                 string name = Console.ReadLine();
 
                 player = SetName(name);
-                player.score = 0;
 
                 if (player.name == null)
                 {
@@ -40,12 +41,19 @@ namespace HangMan
                 }
             } while (player.name == null);
 
+            player.score = 0;
+
             Helpers.Colors.Green("\n~*Player created!*~\n");
             System.Threading.Thread.Sleep(800);
+
+            //TO DO: göra om till huvudmeny? Kunna kolla top 10
             Console.Clear();
 
             Console.WriteLine($"Welcome {player.name}!");
+            Console.WriteLine("______________________\n");
             Console.WriteLine($"Your score: {player.score}");
+            Console.WriteLine("______________________\n");
+            Console.WriteLine($"Your high score: \n");
 
             Helpers.Colors.Grey("\nPress enter to start game");
 
@@ -56,6 +64,7 @@ namespace HangMan
         {
             Player player = new Player();
 
+            //Namn får inte vara hur långt som helst. 10 karaktärer kanske?
             if (player.validCharacters.IsMatch(name))
             {
                 player.name = name;
