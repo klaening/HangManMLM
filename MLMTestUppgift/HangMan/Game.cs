@@ -17,7 +17,7 @@ namespace HangMan
 
             //TO DO: implementera en metod som hämtar et random ord från en textfil.
             //TO DO: orden får inte vara större än 15 karaktärer
-            string randomWord = "policy"; /*Words.GetRandomWord();*/
+            string randomWord = Words.GetRandomWord();
 
             string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);
 
@@ -28,12 +28,24 @@ namespace HangMan
 
             do
             {
-                string letter = Guess.Letter();
+                ConsoleKey info;
+                string letter = string.Empty;
+
+                Console.WriteLine("Choose a letter to guess");
+
+                do
+                {
+                    info = Guess.GuessLetter();
+                    letter = Guess.ValidateLetter(info, ref letter);
+
+                } while (info != ConsoleKey.Enter || letter == string.Empty);                
+                
                 if (gameOver)
                 {
                     break;
                 }
 
+                //letter = letter.ToLower();
                 //Kan vi slänga in detta i ReturnIndexPlace()? En kodrad som vi kan få plats med
                 bool containsLetter = RightOrWrongGuess(letter, randomWord, player, ref win);
 
