@@ -9,7 +9,6 @@ namespace HangMan
     public class Lists
     {
         public static List<char> guessedLetters = new List<char>();
-        List<string> words = new List<string> { "hund", "katt", "hamster", "haj", "krokodil", "duva", "uggla", "lemur", "pissmyra", "ko" };
 
         public static string[] CreateHiddenWordArray(string word)
         {
