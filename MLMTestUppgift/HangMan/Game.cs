@@ -9,16 +9,15 @@ namespace HangMan
 {
     class Game
     {
-        public static void StartGame()
+        public static void StartGame(Player player)
         {
-            Player player = new Player();
             player.lives = 10;
 
             Player.CreatePlayer(ref player);
 
             //TO DO: implementera en metod som hämtar et random ord från en textfil.
             //TO DO: orden får inte vara större än 15 karaktärer
-            string randomWord = Words.GetRandomWord();
+            string randomWord = "policy"; /*Words.GetRandomWord();*/
 
             string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);
 
@@ -40,6 +39,7 @@ namespace HangMan
 
                 if (player.lives == 0)
                 {
+                    win = false;
                     break;
                 }
 
@@ -47,28 +47,99 @@ namespace HangMan
 
                 Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters, player);
                 Display.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter, player);
+                if (!hiddenLetters.Contains("_"))
+                {
+                    win = true;
+                    break;
+                }
                 //TO DO: om hiddenLetters inte innehåller '_' så har man gissat rätt på ordet.
                 Console.WriteLine(player.lives);
 
             } while (!gameOver);
 
-            WinOrLose(win);
+            WinOrLose(win, player);
         }
 
-        private static void WinOrLose(bool win)
+        private static void WinOrLose(bool win, Player player)
         {
             Console.Clear();
             if (win)
             {
                 Console.WriteLine("Win!");
+
+                AddPoints(player);
+                Console.WriteLine(player.score);
                 //Player får poäng beroende på hur snabbt hen gissade rätt
+
+                Console.Write("Do you want to play again? Y/N: ");
+                string answer = Console.ReadLine();
+
+                do
+                {
+                    switch (answer.ToUpper())
+                    {
+                        case "Y":
+                            StartGame(player);
+                            break;
+                        case "N":
+                            Lists.highScores.Add(player.score.ToString());
+                            player.score = 0;
+                            //Anropa huvudmenyn
+                            break;
+                        default:
+                            Console.WriteLine("Wrong input!");
+                            break;
+                    } 
+                } while (answer.ToUpper() != "Y" && answer.ToUpper() != "N");
             }
             else
             {
                 Console.WriteLine("Lose!");
 
+                Lists.highScores.Add(player.score.ToString());
+                player.score = 0;
                 //Player förlorar spelet och den poäng man har lagras som playerns high score
                 //Anropa huvudmenyn
+            }
+        }
+
+        private static void AddPoints(Player player)
+        {
+            switch (player.lives)
+            {
+                case 10:
+                    player.score += 500;
+                    break;
+                case 9:
+                    player.score += 100;
+                    break;
+                case 8:
+                    player.score += 80;
+                    break;
+                case 7:
+                    player.score += 80;
+                    break;
+                case 6:
+                    player.score += 60;
+                    break;
+                case 5:
+                    player.score += 60;
+                    break;
+                case 4:
+                    player.score += 40;
+                    break;
+                case 3:
+                    player.score += 40;
+                    break;
+                case 2:
+                    player.score += 20;
+                    break;
+                case 1:
+                    player.score += 20;
+                    break;
+                case 0:
+                    player.score += 0;
+                    break;
             }
         }
 

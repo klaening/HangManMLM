@@ -9,6 +9,7 @@ namespace HangMan
     public class Lists
     {
         public static List<char> guessedLetters = new List<char>();
+        public static List<string> highScores = new List<string>();
 
         public static string[] CreateHiddenWordArray(string word)
         {
