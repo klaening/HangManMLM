@@ -9,60 +9,68 @@ namespace HangMan
 {
     public class Guess
     {
-        
-        public static string Letter()
+
+        public static ConsoleKey GuessLetter()
         {
-            Regex validCharacters = new Regex("^[a-zA-Z]$");
+            //Funktionen ska returera en key som vi gissat på
 
             ConsoleKeyInfo info;
-            string letter = string.Empty;
 
-            Console.WriteLine("Choose a letter to guess");
+            Console.Write("\b");
 
-            do
+            info = Console.ReadKey();
+            ConsoleKey key = info.Key;
+
+            return key;
+        }
+
+        public static string ValidateLetter(ConsoleKey key, ref string letter)
+        {
+            //tar in key som checkar om det är enter och isf returnera senaste bokstaven
+
+            Regex validCharacters = new Regex("^[a-zA-Z]$");
+
+            //ConsoleKeyInfo info;
+            //string letter = string.Empty;
+
+            Console.Write("\b");
+
+            if (key != ConsoleKey.Enter)
             {
-                Console.Write("\b");
-
-                info = Console.ReadKey();
-
-                if (info.Key != ConsoleKey.Enter)
+                letter = key.ToString();
+            }
+            else if (key == ConsoleKey.Enter)
+            {
+                //Stoppa detta i en egen metod? Förslag: CheckLetter(letter)
+                //Skapa isf RegEx i den metoden
+                //Gör koden mer läsbar också med att vi kommer ha mer kod i else senare
+                if (!validCharacters.IsMatch(letter))
                 {
-                    letter = info.KeyChar.ToString();
+                    Console.WriteLine();
+                    Helpers.Messages.ErrorMessage("Invalid character!");
+
+                    letter = string.Empty;
                 }
-                else if (info.Key == ConsoleKey.Enter)
+                else
                 {
-                    //Stoppa detta i en egen metod? Förslag: CheckLetter(letter)
-                    //Skapa isf RegEx i den metoden
-                    //Gör koden mer läsbar också med att vi kommer ha mer kod i else senare
-                    if (!validCharacters.IsMatch(letter))
-                    {
-                        Console.WriteLine();
-                        Helpers.Messages.ErrorMessage("Invalid character!");
-
-                        letter = string.Empty;
-                    }
-                    else
-                    {
-                        //TO DO: Kod som kollar om bokstaven redan finns i listan
-                        Lists.guessedLetters.Add(Convert.ToChar(letter));
-                        //TO DO: Felmeddelande
-                        //TO DO: Sätt letter till string.Empty
-                    }
-                    //
+                    //TO DO: Kod som kollar om bokstaven redan finns i listan
+                    Lists.guessedLetters.Add(Convert.ToChar(letter.ToLower()));
+                    //TO DO: Felmeddelande
+                    //TO DO: Sätt letter till string.Empty
                 }
-                //else if (info.Key == ConsoleKey.Escape)
-                //{
-                //// Kanske implementera möjligheten att få en bokstav men offrar ett liv för det
-                //    letter = "esc";
-                //    Console.SetCursorPosition(0, Console.CursorTop);
+                //
+            }
+            //else if (info.Key == ConsoleKey.Escape)
+            //{
+            //// Kanske implementera möjligheten att få en bokstav men offrar ett liv för det
+            //    letter = "esc";
+            //    Console.SetCursorPosition(0, Console.CursorTop);
 
-                //    if (Guess.Word(word))
-                //        win = true;
-                //    else
-                //        win = false;
-                //}
-
-            } while (info.Key != ConsoleKey.Enter || letter == string.Empty);
+            //    if (Guess.Word(word))
+            //        win = true;
+            //    else
+            //        win = false;
+            //}
 
             return letter;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HangMan
 {
-    class Game
+    public class Game
     {
         public static void StartGame(Player player)
         {
@@ -17,7 +17,7 @@ namespace HangMan
 
             //TO DO: implementera en metod som hämtar et random ord från en textfil.
             //TO DO: orden får inte vara större än 15 karaktärer
-            string randomWord = "policy"; /*Words.GetRandomWord();*/
+            string randomWord = Words.GetRandomWord();
 
             string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);
 
@@ -28,13 +28,28 @@ namespace HangMan
 
             do
             {
-                string letter = Guess.Letter();
+                ConsoleKey info;
+                string letter = string.Empty;
+
+                Console.WriteLine("Choose a letter to guess");
+
+                do
+                {
+                    info = Guess.GuessLetter();
+                    letter = Guess.ValidateLetter(info, ref letter);
+
+                } while (info != ConsoleKey.Enter || letter == string.Empty);                
+                
                 if (gameOver)
                 {
                     break;
                 }
 
                 //Kan vi slänga in detta i ReturnIndexPlace()? En kodrad som vi kan få plats med
+<<<<<<< HEAD
+=======
+                //Unit testing?
+>>>>>>> AddTests
                 bool containsLetter = RightOrWrongGuess(letter, randomWord, player);
 
                 if (player.lives == 0)
@@ -171,7 +186,11 @@ namespace HangMan
             return returnString;
         }
 
+<<<<<<< HEAD
         private static bool RightOrWrongGuess(string letter, string word, Player player)
+=======
+        public static bool RightOrWrongGuess(string letter, string word, Player player)
+>>>>>>> AddTests
         {
             if (!word.Contains(letter))
             {
