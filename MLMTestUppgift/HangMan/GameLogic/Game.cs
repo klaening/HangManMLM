@@ -109,8 +109,6 @@ namespace HangMan
                 Lists.highScores.Add(player.score.ToString());
                 player.score = 0;
                 Menus.MainMenu();
-                //Player förlorar spelet och den poäng man har lagras som playerns high score
-                //Anropa huvudmenyn
             }
         }
 
