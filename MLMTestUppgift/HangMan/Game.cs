@@ -35,7 +35,7 @@ namespace HangMan
                 }
 
                 //Kan vi slänga in detta i ReturnIndexPlace()? En kodrad som vi kan få plats med
-                bool containsLetter = RightOrWrongGuess(letter, randomWord, player, ref win);
+                bool containsLetter = RightOrWrongGuess(letter, randomWord, player);
 
                 if (player.lives == 0)
                 {
@@ -171,17 +171,13 @@ namespace HangMan
             return returnString;
         }
 
-        private static bool RightOrWrongGuess(string letter, string word, Player player, ref bool win)
+        private static bool RightOrWrongGuess(string letter, string word, Player player)
         {
             if (!word.Contains(letter))
             {
                 player.lives--;
             }
 
-            if (player.lives == 0)
-            {
-                win = false;
-            }
             return word.Contains(letter);
         }
     }
