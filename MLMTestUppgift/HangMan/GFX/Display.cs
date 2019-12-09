@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HangMan
+namespace HangMan.GFX
 {
     public static class Display
     {

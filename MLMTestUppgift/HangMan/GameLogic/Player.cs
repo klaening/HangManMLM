@@ -68,7 +68,7 @@ namespace HangMan
 
             Helpers.Colors.Grey("\nPress enter to start game");
 
-            Display.EnterToStart();
+            GFX.Display.EnterToStart();
         }
 
         public static Player SetName(string name)
