@@ -68,6 +68,7 @@ namespace HangMan
             }
             else
             {
+                //Om den finns med i ordet addera inte
                 Lists.guessedLetters.Add(Convert.ToChar(letter));
             }
 

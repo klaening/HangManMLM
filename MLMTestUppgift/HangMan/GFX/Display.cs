@@ -139,7 +139,10 @@ namespace HangMan.GFX
             do
             {
                 info = Console.ReadKey();
-                Console.Write("\b \b");
+                if (info.Key != ConsoleKey.Enter)
+                {
+                    Console.Write("\b \b");
+                }
 
             } while (info.Key != ConsoleKey.Enter);
         }

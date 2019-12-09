@@ -30,15 +30,16 @@ namespace HangMan
 
         public int Score { get; set; }
 
-        public static void CreatePlayer(ref Player player)
+        public static Player CreatePlayer()
         {
             Console.Title = "Create Player";
+            Console.Clear();
 
             Console.WriteLine("[Create Player]\n");
-
             Console.WriteLine("Enter player name");
-
             Helpers.Messages.PlayerNameInfoMessage("[Name may contain letters and numbers]");
+
+            Player player;
 
             do
             {
@@ -57,18 +58,7 @@ namespace HangMan
             Helpers.Colors.Green("\n~*Player created!*~\n");
             System.Threading.Thread.Sleep(800);
 
-            //TO DO: göra om till huvudmeny? Kunna kolla top 10
-            Console.Clear();
-
-            Console.WriteLine($"Welcome {player.name}!");
-            Console.WriteLine("______________________\n");
-            Console.WriteLine($"Your score: {player.score}");
-            Console.WriteLine("______________________\n");
-            Console.WriteLine($"Your high score: \n");
-
-            Helpers.Colors.Grey("\nPress enter to start game");
-
-            GFX.Display.EnterToStart();
+            return player;
         }
 
         public static Player SetName(string name)

@@ -10,11 +10,9 @@ namespace HangMan
     {
         static void Main(string[] args)
         {
-            Player player = new Player();
-
             GFX.ASCII.WelcomeScreen();
 
-            Game.StartGame(player);
+            Menus.MainMenu();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace HangMan
         public static void StartGame(Player player)
         {
             //Lägga till i huvudmeny
-            Player.CreatePlayer(ref player);
+            player = Player.CreatePlayer();
             player.lives = 10;
 
             string randomWord = Lists.GetRandomWord();
