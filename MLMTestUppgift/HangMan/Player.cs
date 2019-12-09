@@ -11,11 +11,22 @@ namespace HangMan
     {
         public string name;
         public int score;
+        public int lives = 10;
         //Säger att den ska ha ett start och ett slut alltså ett ord och inte bara att den innehåller nån av karaktärerna. + indikerar att man kan ha
         //flera karaktärer
         private Regex validCharacters = new Regex("^[a-zA-Z0-9]+$");
 
-        public string Name { get; set; }
+        public string Name 
+        {
+            get 
+            {
+                return name;
+            }
+            set 
+            {
+                Name = name;
+            } 
+        }
 
         public int Score { get; set; }
 

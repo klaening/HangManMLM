@@ -12,6 +12,7 @@ namespace HangMan
         public static void StartGame()
         {
             Player player = new Player();
+            player.lives = 10;
 
             Player.CreatePlayer(ref player);
 
@@ -24,24 +25,30 @@ namespace HangMan
             bool gameOver = false;
             bool win = false;
 
-            Display.InitialUpdate(hiddenLetters);
+            Display.InitialUpdate(hiddenLetters, player);
 
             do
             {
-                string letter = Guess.Letter(ref win, ref gameOver, randomWord);
+                string letter = Guess.Letter();
                 if (gameOver)
                 {
                     break;
                 }
 
                 //Kan vi slänga in detta i ReturnIndexPlace()? En kodrad som vi kan få plats med
-                bool containsLetter = DoesWordContain(letter, randomWord);
+                bool containsLetter = RightOrWrongGuess(letter, randomWord, player, ref win);
+
+                if (player.lives == 0)
+                {
+                    break;
+                }
 
                 string indexPlaces = ReturnIndexPlace(containsLetter, letter, randomWord);
 
-                Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters);
-                Display.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+                Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters, player);
+                Display.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter, player);
                 //TO DO: om hiddenLetters inte innehåller '_' så har man gissat rätt på ordet.
+                Console.WriteLine(player.lives);
 
             } while (!gameOver);
 
@@ -50,6 +57,7 @@ namespace HangMan
 
         private static void WinOrLose(bool win)
         {
+            Console.Clear();
             if (win)
             {
                 Console.WriteLine("Win!");
@@ -58,7 +66,9 @@ namespace HangMan
             else
             {
                 Console.WriteLine("Lose!");
+
                 //Player förlorar spelet och den poäng man har lagras som playerns high score
+                //Anropa huvudmenyn
             }
         }
 
@@ -90,8 +100,17 @@ namespace HangMan
             return returnString;
         }
 
-        private static bool DoesWordContain(string letter, string word)
+        private static bool RightOrWrongGuess(string letter, string word, Player player, ref bool win)
         {
+            if (!word.Contains(letter))
+            {
+                player.lives--;
+            }
+
+            if (player.lives == 0)
+            {
+                win = false;
+            }
             return word.Contains(letter);
         }
     }

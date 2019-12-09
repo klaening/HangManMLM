@@ -5,24 +5,64 @@ namespace HangMan
 {
     public static class Display
     {
-        internal static void UpdateDisplay(List<char> letters, string[] hiddenLetters)
+        internal static void UpdateDisplay(List<char> letters, string[] hiddenLetters, Player player)
         {
             Console.Clear();
-            //TO DO: switch case för olika metoder eller ha det i en egen metod? Isf måste UpdateDisplay ta in player som argument.
-            GFX.ASCII.ZeroLivesLeft();
+
+            Helpers.Colors.Grey($"Player: {player.Name}\n" +
+                $"Points: {player.score}");
+
+            switch (player.lives)
+            {
+                case 10:
+                    GFX.ASCII.TenLivesLeft();
+                    break;
+                case 9:
+                    GFX.ASCII.NineLivesLeft();
+                    break;
+                case 8:
+                    GFX.ASCII.EightLivesLeft();
+                    break;
+                case 7:
+                    GFX.ASCII.SevenLivesLeft();
+                    break;
+                case 6:
+                    GFX.ASCII.SixLivesLeft();
+                    break;
+                case 5:
+                    GFX.ASCII.FiveLivesLeft();
+                    break;
+                case 4:
+                    GFX.ASCII.FourLivesLeft();
+                    break;
+                case 3:
+                    GFX.ASCII.ThreeLivesLeft();
+                    break;
+                case 2:
+                    GFX.ASCII.TwoLivesLeft();
+                    break;
+                case 1:
+                    GFX.ASCII.OneLifeLeft();
+                    break;
+                case 0:
+                    GFX.ASCII.ZeroLivesLeft();
+                    break;
+            }
             PrintHiddenLetters(hiddenLetters);
             GuessedLetters(letters);
         }
 
-        internal static void InitialUpdate(string[] hiddenLetters)
+        internal static void InitialUpdate(string[] hiddenLetters, Player player)
         {
             Console.Clear();
+            Helpers.Colors.Grey($"Player: {player.Name}\n" +
+                $"Points: {player.score}");
             GFX.ASCII.TenLivesLeft();
             PrintHiddenLetters(hiddenLetters);
             Console.WriteLine("\n\n");
         }
 
-        public static void ChangeHiddenLetters(ref string[] hiddenLetters, string indexPlaces, string letter)
+        public static void ChangeHiddenLetters(ref string[] hiddenLetters, string indexPlaces, string letter, Player player)
         {
             string[] indexString = indexPlaces.Split(',');
             int[] indexInt = new int[indexString.Length];
@@ -41,7 +81,7 @@ namespace HangMan
                         if (i == indexInt[j])
                         {
                             hiddenLetters[i] = letter;
-                            UpdateDisplay(Lists.guessedLetters, hiddenLetters);
+                            UpdateDisplay(Lists.guessedLetters, hiddenLetters, player);
                         }
                     }
                 }

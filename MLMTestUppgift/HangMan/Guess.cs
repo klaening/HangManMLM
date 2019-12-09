@@ -10,7 +10,7 @@ namespace HangMan
     public class Guess
     {
         
-        public static string Letter(ref bool win, ref bool gameOver, string word)
+        public static string Letter()
         {
             Regex validCharacters = new Regex("^[a-zA-Z]$");
 
@@ -25,7 +25,7 @@ namespace HangMan
 
                 info = Console.ReadKey();
 
-                if (info.Key != ConsoleKey.Enter && info.Key != ConsoleKey.Escape)
+                if (info.Key != ConsoleKey.Enter)
                 {
                     letter = info.KeyChar.ToString();
                 }
@@ -50,31 +50,21 @@ namespace HangMan
                     }
                     //
                 }
-                else if (info.Key == ConsoleKey.Escape)
-                {
-                    letter = "esc";
-                    Console.SetCursorPosition(0, Console.CursorTop);
+                //else if (info.Key == ConsoleKey.Escape)
+                //{
+                //// Kanske implementera möjligheten att få en bokstav men offrar ett liv för det
+                //    letter = "esc";
+                //    Console.SetCursorPosition(0, Console.CursorTop);
 
-                    if (Guess.Word(ref gameOver, word))
-                        win = true;
-                    else
-                        win = false;
-                }
+                //    if (Guess.Word(word))
+                //        win = true;
+                //    else
+                //        win = false;
+                //}
 
-            } while (info.Key != ConsoleKey.Enter && info.Key != ConsoleKey.Escape || letter == string.Empty);
+            } while (info.Key != ConsoleKey.Enter || letter == string.Empty);
 
             return letter;
-        }
-
-        private static bool Word(ref bool gameOver, string word)
-        {
-            //Tänka om med det här?
-            Console.Write("Take a guess: ");
-            string guess = Console.ReadLine();
-
-            gameOver = true;
-
-            return guess.ToLower() == word.ToLower();
         }
     }
 }
