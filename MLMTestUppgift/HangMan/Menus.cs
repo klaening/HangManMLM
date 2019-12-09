@@ -11,6 +11,7 @@ namespace HangMan
         public static void MainMenu()
         {
             Console.Title = "Main Menu";
+            Console.Clear();
 
             Console.WriteLine("Main Menu");
             Console.WriteLine("_________\n");

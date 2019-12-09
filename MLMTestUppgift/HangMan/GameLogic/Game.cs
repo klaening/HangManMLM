@@ -11,9 +11,8 @@ namespace HangMan
     {
         public static void StartGame(Player player)
         {
-            //Lägga till i huvudmeny
-            player = Player.CreatePlayer();
             player.lives = 10;
+            Lists.guessedLetters.Clear();
 
             string randomWord = Lists.GetRandomWord();
 
@@ -43,9 +42,7 @@ namespace HangMan
                     break;
                 }
 
-                //Kan vi slänga in detta i ReturnIndexPlace()? En kodrad som vi kan få plats med
-                //Unit testing?
-                bool containsLetter = RightOrWrongGuess(letter, randomWord, player);
+                RightOrWrongGuess(letter, randomWord, player);
 
                 if (player.lives == 0)
                 {
@@ -53,7 +50,7 @@ namespace HangMan
                     break;
                 }
 
-                string indexPlaces = ReturnIndexPlace(containsLetter, letter, randomWord);
+                string indexPlaces = ReturnIndexPlace(letter, randomWord);
 
                 GFX.Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters, player);
                 GFX.Display.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter, player);
@@ -65,21 +62,20 @@ namespace HangMan
 
             } while (!gameOver);
 
-            WinOrLose(win, player);
+            WinOrLose(win, player, randomWord);
         }
 
-        private static void WinOrLose(bool win, Player player)
+        private static void WinOrLose(bool win, Player player, string randomWord)
         {
             Console.Clear();
             if (win)
             {
-                Console.WriteLine("Win!");
+                Console.WriteLine("Win!\n");
 
                 AddPoints(player);
-                Console.WriteLine(player.score);
-                //Player får poäng beroende på hur snabbt hen gissade rätt
+                Console.WriteLine($"Your current score: " + player.score);
 
-                Console.Write("Do you want to play again? Y/N: ");
+                Console.Write("\nDo you want to play again? Y/N: ");
                 string answer = Console.ReadLine();
 
                 do
@@ -89,11 +85,13 @@ namespace HangMan
                         case "Y":
                             StartGame(player);
                             break;
+
                         case "N":
                             Lists.highScores.Add(player.score.ToString());
                             player.score = 0;
-                            //Anropa huvudmenyn
+                            Menus.MainMenu();
                             break;
+
                         default:
                             Console.WriteLine("Wrong input!");
                             break;
@@ -102,10 +100,15 @@ namespace HangMan
             }
             else
             {
-                Console.WriteLine("Lose!");
+                Console.WriteLine("Lose!\n");
+                Console.WriteLine("Your total score was: " + player.score);
+                Console.WriteLine("Secret word was: " + randomWord.ToUpper());
+                Helpers.Colors.Grey("\nPress enter to go to main menu");
+                GFX.Display.EnterToStart();
 
                 Lists.highScores.Add(player.score.ToString());
                 player.score = 0;
+                Menus.MainMenu();
                 //Player förlorar spelet och den poäng man har lagras som playerns high score
                 //Anropa huvudmenyn
             }
@@ -151,13 +154,12 @@ namespace HangMan
             }
         }
 
-        //Sätta denna metod i en egen klass för alla ord?
-        private static string ReturnIndexPlace(bool containsLetter, string aLetter, string word)
+        private static string ReturnIndexPlace(string aLetter, string word)
         {
             char letter = Convert.ToChar(aLetter);
             string returnString = string.Empty;
 
-            if (containsLetter)
+            if (word.Contains(letter))
             {
                 for (int i = 0; i < word.Length; i++)
                 {

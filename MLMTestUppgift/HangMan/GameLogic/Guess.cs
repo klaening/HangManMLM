@@ -12,8 +12,6 @@ namespace HangMan
 
         public static ConsoleKey GuessLetter()
         {
-            //Funktionen ska returera en key som vi gissat på
-
             ConsoleKeyInfo info;
 
             Console.Write("\b");
@@ -68,7 +66,6 @@ namespace HangMan
             }
             else
             {
-                //Om den finns med i ordet addera inte
                 Lists.guessedLetters.Add(Convert.ToChar(letter));
             }
 
