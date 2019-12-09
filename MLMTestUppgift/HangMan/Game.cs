@@ -17,7 +17,7 @@ namespace HangMan
 
             //TO DO: implementera en metod som hämtar et random ord från en textfil.
             //TO DO: orden får inte vara större än 15 karaktärer
-            string randomWord = "tranquilizers";
+            string randomWord = Words.GetRandomWord();
 
             string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);
 
