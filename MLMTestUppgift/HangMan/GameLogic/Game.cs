@@ -11,12 +11,10 @@ namespace HangMan
     {
         public static void StartGame(Player player)
         {
+            //Lägga till i huvudmeny
+            Player.CreatePlayer(ref player);
             player.lives = 10;
 
-            Player.CreatePlayer(ref player);
-
-            //TO DO: implementera en metod som hämtar ett random ord från en textfil.
-            //TO DO: orden får inte vara större än 15 karaktärer
             string randomWord = Lists.GetRandomWord();
 
             string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);

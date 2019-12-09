@@ -80,7 +80,7 @@ namespace HangMan.GFX
                     {
                         if (i == indexInt[j])
                         {
-                            hiddenLetters[i] = letter;
+                            hiddenLetters[i] = letter.ToUpper();
                             UpdateDisplay(Lists.guessedLetters, hiddenLetters, player);
                         }
                     }

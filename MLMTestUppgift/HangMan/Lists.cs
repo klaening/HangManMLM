@@ -37,7 +37,7 @@ namespace HangMan
                     randomWord = wordArray[i];
                 }
             }
-            return randomWord.ToUpper();
+            return randomWord;
         }
     }
 }
