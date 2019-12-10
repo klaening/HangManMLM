@@ -55,6 +55,11 @@ namespace HangMan.GFX
             }
         }
 
+        internal static void PrintHighScore()
+        {
+
+        }
+
         internal static void InitialUpdate(string[] hiddenLetters, Player player)
         {
             Console.Clear();

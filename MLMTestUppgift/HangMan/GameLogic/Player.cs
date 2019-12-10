@@ -14,7 +14,7 @@ namespace HangMan
         public int lives = 10;
         //Säger att den ska ha ett start och ett slut alltså ett ord och inte bara att den innehåller nån av karaktärerna. + indikerar att man kan ha
         //flera karaktärer
-        private Regex validCharacters = new Regex("^[a-zA-Z0-9]+$");
+        static Regex validCharacters = new Regex("^[a-zA-Z0-9]+$");
 
         public string Name 
         {
@@ -41,19 +41,24 @@ namespace HangMan
             Console.WriteLine("Enter player name");
             Helpers.Messages.PlayerNameInfoMessage("[Name may contain letters and numbers]");
 
-            Player player;
+            Player player = new Player();
+            bool validName;
 
             do
             {
                 string name = Console.ReadLine();
 
-                player = SetName(name);
+                validName = CheckName(name);
 
-                if (player.name == null)
+                if (!validName)
                 {
                     Helpers.Messages.ErrorMessage("Invalid name");
                 }
-            } while (player.name == null);
+                else
+                {
+                    player.name = name;
+                }
+            } while (!validName);
 
             player.score = 0;
 
@@ -63,17 +68,15 @@ namespace HangMan
             return player;
         }
 
-        public static Player SetName(string name)
+        public static bool CheckName(string name)
         {
-            Player player = new Player();
-
             //Namn får inte vara hur långt som helst. 10 karaktärer kanske?
-            if (player.validCharacters.IsMatch(name))
+            if (!validCharacters.IsMatch(name) || name.Length > 10)
             {
-                player.name = name;
+                return false;
             }
 
-            return player;
+            return true;
         }
 
         public Player()

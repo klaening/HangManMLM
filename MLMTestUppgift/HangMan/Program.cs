@@ -11,7 +11,7 @@ namespace HangMan
         static void Main(string[] args)
         {
             GFX.ASCII.WelcomeScreen();
-
+            //Lists.GetHighScore();
             Menus.MainMenu();
         }
     }

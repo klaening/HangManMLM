@@ -40,28 +40,22 @@ namespace HangMan
             return randomWord;
         }
 
-
-
-        public string GetHighScore()
+        public static string GetHighScore()
         {
-            string highScore = "";
+            StreamReader sr = new StreamReader("HighScore.txt");
+            string highScore = sr.ReadToEnd();
 
-            using (StreamReader sr = new StreamReader("HighScore.txt"))
-            {
-                highScore = sr.ReadLine();
-            }
+            sr.Close();
 
             return highScore;
         }
 
-        public void SaveHighScore(Player player)
+        public static void SaveHighScore(Player player)
         {
-            using (StreamWriter sw = new StreamWriter("HighScore.txt"))
-            {
-                highScores.Add(player.score.ToString());
+            StreamWriter sw = new StreamWriter("HighScore.txt");
+            sw.WriteLine(player.name + " " + player.score.ToString());
 
-                sw.WriteLine(player.score);
-            }
+            sw.Close();
         }
     }
 }

@@ -59,7 +59,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HighScore.txt" />
     <Content Include="Words.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -85,7 +85,7 @@ namespace HangMan
                             break;
 
                         case "N":
-                            Lists.highScores.Add(player.score.ToString());
+                            Lists.SaveHighScore(player);
                             player.score = 0;
                             Menus.MainMenu();
                             break;
@@ -103,7 +103,7 @@ namespace HangMan
                 Helpers.Colors.Grey("\nPress enter to go to main menu");
                 GFX.Display.EnterToStart();
 
-                Lists.highScores.Add(player.score.ToString());
+                Lists.SaveHighScore(player);
                 player.score = 0;
                 ctr = 1;
 
