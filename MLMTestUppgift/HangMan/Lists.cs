@@ -39,5 +39,29 @@ namespace HangMan
             }
             return randomWord;
         }
+
+
+
+        public string GetHighScore()
+        {
+            string highScore = "";
+
+            using (StreamReader sr = new StreamReader("HighScore.txt"))
+            {
+                highScore = sr.ReadLine();
+            }
+
+            return highScore;
+        }
+
+        public void SaveHighScore(Player player)
+        {
+            using (StreamWriter sw = new StreamWriter("HighScore.txt"))
+            {
+                highScores.Add(player.score.ToString());
+
+                sw.WriteLine(player.score);
+            }
+        }
     }
 }
