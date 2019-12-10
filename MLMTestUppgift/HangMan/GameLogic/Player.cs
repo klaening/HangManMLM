@@ -32,6 +32,8 @@ namespace HangMan
 
         public static Player CreatePlayer()
         {
+            //Namn får inte vara för långt
+            
             Console.Title = "Create Player";
             Console.Clear();
 

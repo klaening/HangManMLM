@@ -9,8 +9,12 @@ namespace HangMan
 {
     public class Game
     {
+        public static int ctr = 1;
+
         public static void StartGame(Player player)
         {
+            Console.Title = "Word #" + ctr;
+
             player.lives = 10;
             Lists.guessedLetters.Clear();
 
@@ -18,8 +22,7 @@ namespace HangMan
 
             string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);
 
-            bool gameOver = false;
-            bool win = false;
+            bool win;
 
             GFX.Display.InitialUpdate(hiddenLetters, player);
 
@@ -35,12 +38,7 @@ namespace HangMan
                     info = Guess.GuessLetter();
                     letter = Guess.ValidateLetter(info, ref letter);
 
-                } while (info != ConsoleKey.Enter || letter == string.Empty);                
-                
-                if (gameOver)
-                {
-                    break;
-                }
+                } while (info != ConsoleKey.Enter || letter == string.Empty);
 
                 RightOrWrongGuess(letter, randomWord, player);
 
@@ -60,7 +58,7 @@ namespace HangMan
                     break;
                 }
 
-            } while (!gameOver);
+            } while (true);
 
             WinOrLose(win, player, randomWord);
         }
@@ -71,6 +69,7 @@ namespace HangMan
             
             if (win)
             {
+                AddPoints(player);
                 GFX.Display.WinDisplay(player);
 
                 Helpers.Colors.Grey("\nDo you want to play again? Y/N: ");
@@ -81,6 +80,7 @@ namespace HangMan
                     switch (answer.ToUpper())
                     {
                         case "Y":
+                            ctr++;
                             StartGame(player);
                             break;
 
@@ -105,11 +105,13 @@ namespace HangMan
 
                 Lists.highScores.Add(player.score.ToString());
                 player.score = 0;
+                ctr = 1;
+
                 Menus.MainMenu();
             }
         }
 
-        public static void AddPoints(Player player)
+        private static void AddPoints(Player player)
         {
             switch (player.lives)
             {

@@ -44,6 +44,7 @@ namespace HangMan
 
         public static void PlayerMenu(Player player)
         {
+            Console.Title = "Player Menu";
             Console.Clear();
 
             Console.WriteLine($"Welcome {player.name}!");

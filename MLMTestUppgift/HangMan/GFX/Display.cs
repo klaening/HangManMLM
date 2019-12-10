@@ -9,11 +9,8 @@ namespace HangMan.GFX
         {
             Console.Clear();
 
-            Helpers.Colors.Grey($"Player: {player.Name}\n" +
-                $"Points: {player.score}");
-
+            PlayerInfo(player);
             HowManyLivesLeft(player);
-            
             PrintHiddenLetters(hiddenLetters);
             GuessedLetters(letters);
         }
@@ -61,23 +58,26 @@ namespace HangMan.GFX
         internal static void InitialUpdate(string[] hiddenLetters, Player player)
         {
             Console.Clear();
-            Helpers.Colors.Grey($"Player: {player.Name}\n" +
-                $"Points: {player.score}");
-            ASCII.TenLivesLeft();
+            PlayerInfo(player);
+            HowManyLivesLeft(player);
             PrintHiddenLetters(hiddenLetters);
             Console.WriteLine("\n\n");
         }
 
         internal static void WinDisplay(Player player)
         {
-            Console.WriteLine("");
+            PlayerInfo(player);
             HowManyLivesLeft(player);
             Console.SetCursorPosition(18, Console.CursorTop);
             Helpers.Colors.Green("YOU WIN!");
             Helpers.Colors.Grey("\n\n____________________________________________\n");
 
-            Game.AddPoints(player);
             Console.WriteLine($"\n\nYour current score: " + player.score);
+        }
+
+        private static void PlayerInfo(Player player)
+        {
+            Helpers.Colors.Grey($"Player: {player.Name}\n" + $"Score: {player.score}");
         }
 
         public static void LoseDisplay(Player player, string randomWord)
