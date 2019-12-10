@@ -68,14 +68,12 @@ namespace HangMan
         private static void WinOrLose(bool win, Player player, string randomWord)
         {
             Console.Clear();
+            
             if (win)
             {
-                Console.WriteLine("Win!\n");
+                GFX.Display.WinDisplay(player);
 
-                AddPoints(player);
-                Console.WriteLine($"Your current score: " + player.score);
-
-                Console.Write("\nDo you want to play again? Y/N: ");
+                Helpers.Colors.Grey("\nDo you want to play again? Y/N: ");
                 string answer = Console.ReadLine();
 
                 do
@@ -100,9 +98,8 @@ namespace HangMan
             }
             else
             {
-                Console.WriteLine("Lose!\n");
-                Console.WriteLine("Your total score was: " + player.score);
-                Console.WriteLine("Secret word was: " + randomWord.ToUpper());
+                GFX.Display.LoseDisplay(player, randomWord);
+
                 Helpers.Colors.Grey("\nPress enter to go to main menu");
                 GFX.Display.EnterToStart();
 
@@ -112,7 +109,7 @@ namespace HangMan
             }
         }
 
-        private static void AddPoints(Player player)
+        public static void AddPoints(Player player)
         {
             switch (player.lives)
             {

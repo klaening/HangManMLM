@@ -12,44 +12,50 @@ namespace HangMan.GFX
             Helpers.Colors.Grey($"Player: {player.Name}\n" +
                 $"Points: {player.score}");
 
+            HowManyLivesLeft(player);
+            
+            PrintHiddenLetters(hiddenLetters);
+            GuessedLetters(letters);
+        }
+
+        public static void HowManyLivesLeft(Player player)
+        {
             switch (player.lives)
             {
                 case 10:
-                    GFX.ASCII.TenLivesLeft();
+                    ASCII.TenLivesLeft();
                     break;
                 case 9:
-                    GFX.ASCII.NineLivesLeft();
+                    ASCII.NineLivesLeft();
                     break;
                 case 8:
-                    GFX.ASCII.EightLivesLeft();
+                    ASCII.EightLivesLeft();
                     break;
                 case 7:
-                    GFX.ASCII.SevenLivesLeft();
+                    ASCII.SevenLivesLeft();
                     break;
                 case 6:
-                    GFX.ASCII.SixLivesLeft();
+                    ASCII.SixLivesLeft();
                     break;
                 case 5:
-                    GFX.ASCII.FiveLivesLeft();
+                    ASCII.FiveLivesLeft();
                     break;
                 case 4:
-                    GFX.ASCII.FourLivesLeft();
+                    ASCII.FourLivesLeft();
                     break;
                 case 3:
-                    GFX.ASCII.ThreeLivesLeft();
+                    ASCII.ThreeLivesLeft();
                     break;
                 case 2:
-                    GFX.ASCII.TwoLivesLeft();
+                    ASCII.TwoLivesLeft();
                     break;
                 case 1:
-                    GFX.ASCII.OneLifeLeft();
+                    ASCII.OneLifeLeft();
                     break;
                 case 0:
-                    GFX.ASCII.ZeroLivesLeft();
+                    ASCII.ZeroLivesLeft();
                     break;
             }
-            PrintHiddenLetters(hiddenLetters);
-            GuessedLetters(letters);
         }
 
         internal static void InitialUpdate(string[] hiddenLetters, Player player)
@@ -57,9 +63,33 @@ namespace HangMan.GFX
             Console.Clear();
             Helpers.Colors.Grey($"Player: {player.Name}\n" +
                 $"Points: {player.score}");
-            GFX.ASCII.TenLivesLeft();
+            ASCII.TenLivesLeft();
             PrintHiddenLetters(hiddenLetters);
             Console.WriteLine("\n\n");
+        }
+
+        internal static void WinDisplay(Player player)
+        {
+            Console.WriteLine("");
+            HowManyLivesLeft(player);
+            Console.SetCursorPosition(18, Console.CursorTop);
+            Helpers.Colors.Green("YOU WIN!");
+            Helpers.Colors.Grey("\n\n____________________________________________\n");
+
+            Game.AddPoints(player);
+            Console.WriteLine($"\n\nYour current score: " + player.score);
+        }
+
+        public static void LoseDisplay(Player player, string randomWord)
+        {
+            Console.WriteLine("");
+            HowManyLivesLeft(player);
+            Console.SetCursorPosition(18, Console.CursorTop);
+            Helpers.Colors.Red("YOU LOSE");
+            Helpers.Colors.Grey("\n\n____________________________________________\n");
+
+            Console.WriteLine("\n\nYour total score was: " + player.score);
+            Console.WriteLine("Secret word was: " + randomWord.ToUpper());
         }
 
         public static void ChangeHiddenLetters(ref string[] hiddenLetters, string indexPlaces, string letter, Player player)
