@@ -57,7 +57,33 @@ namespace HangMan.GFX
 
         internal static void PrintHighScore()
         {
+            string rawString = Lists.GetHighScore();
+            string[] everyNewLine = Lists.SplitForEveryLine(rawString);
+            List<Player> topTenPlayerHighScores = Lists.SplitAndSort(everyNewLine);
 
+            PrintHighScoreList(topTenPlayerHighScores);
+        }
+
+        private static void PrintHighScoreList(List<Player> topTenPlayerHighScores)
+        {
+            Console.Title = "High Score";
+            Console.Clear();
+            Console.WriteLine("Top Ten Highscores!");
+            Console.WriteLine("___________________\n");
+
+            int ctr = 1;
+
+            foreach (Player player in topTenPlayerHighScores)
+            {
+                Console.Write(ctr + ". ");
+                Console.Write(player.name);
+                Console.SetCursorPosition(22, Console.CursorTop);
+                Console.WriteLine(player.score);
+                ctr++;
+            }
+
+            Helpers.Colors.Grey("\n\nPress enter to go back to main menu");
+            EnterToStart();
         }
 
         internal static void InitialUpdate(string[] hiddenLetters, Player player)

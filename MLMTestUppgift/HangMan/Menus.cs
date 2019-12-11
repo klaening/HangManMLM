@@ -34,9 +34,7 @@ namespace HangMan
 
                     case "2":
                         GFX.Display.PrintHighScore();
-                        Console.WriteLine($"Highscore: {Lists.GetHighScore()}");
-                        Console.ReadKey();
-                        Menus.MainMenu();
+                        MainMenu();
                         break;
 
                     default:

@@ -53,6 +53,8 @@ namespace HangMan
                 if (!validName)
                 {
                     Helpers.Messages.ErrorMessage("Invalid name");
+                    Console.Clear();
+                    CreatePlayer();
                 }
                 else
                 {
@@ -82,6 +84,12 @@ namespace HangMan
         public Player()
         {
 
+        }
+
+        public Player(string aName, int aScore)
+        {
+            name = aName;
+            score = aScore;
         }
     }
 }

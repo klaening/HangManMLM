@@ -20,7 +20,7 @@ namespace HangMan.Helpers
             }
 
             Console.SetCursorPosition(0, Console.CursorTop - 1);
-            Console.Write("                         ");
+            Console.Write("                                               ");
 
             Console.SetCursorPosition(0, Console.CursorTop);
         }

@@ -10,7 +10,6 @@ namespace HangMan
     public class Lists
     {
         public static List<char> guessedLetters = new List<char>();
-        public static List<string> highScores = new List<string>();
 
         public static string[] CreateHiddenWordArray(string word)
         {
@@ -42,20 +41,53 @@ namespace HangMan
 
         public static string GetHighScore()
         {
-            StreamReader sr = new StreamReader("HighScore.txt");
-            string highScore = sr.ReadToEnd();
+            string highScore;
+            using (StreamReader sr = new StreamReader("HighScore.txt"))
+            {
+                highScore = sr.ReadToEnd();
+            }
 
-            sr.Close();
+            highScore = highScore.Remove(highScore.LastIndexOf(Environment.NewLine));
 
             return highScore;
         }
 
         public static void SaveHighScore(Player player)
         {
-            StreamWriter sw = new StreamWriter("HighScore.txt");
-            sw.WriteLine(player.name + " " + player.score.ToString());
+            using (StreamWriter sw = File.AppendText("HighScore.txt"))
+            {
+                sw.WriteLine(player.name + " " + player.score.ToString());
+            }
+        }
 
-            sw.Close();
+        internal static string[] SplitForEveryLine(string rawString)
+        {
+            string[] everyNewLine = rawString.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            return everyNewLine;
+        }
+
+        internal static List<Player> SplitAndSort(string[] everyNewLine)
+        {
+            List<Player> playerHighScores = new List<Player>();
+
+            for (int i = 0; i < everyNewLine.Length; i++)
+            {
+                string[] nameAndScore = everyNewLine[i].Split(' ');
+
+                string playerName = nameAndScore[0];
+                int playerScore = int.Parse(nameAndScore[1]);
+
+                Player player = new Player(playerName, playerScore);
+
+                playerHighScores.Add(player);
+            }
+
+            List<Player> sortedPlayerHighScores = playerHighScores.OrderByDescending(p=>p.score).ToList();
+
+            List<Player> topTenPlayerHighScores = sortedPlayerHighScores.Take(10).ToList();
+
+            return topTenPlayerHighScores;
         }
     }
 }

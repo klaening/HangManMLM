@@ -154,7 +154,7 @@ namespace HangMan
         private static string ReturnIndexPlace(string aLetter, string word)
         {
             char letter = Convert.ToChar(aLetter);
-            string returnString = string.Empty;
+            string indexPlaces = string.Empty;
 
             if (word.Contains(letter))
             {
@@ -162,19 +162,19 @@ namespace HangMan
                 {
                     if (word[i] == letter)
                     {
-                        if (returnString == "")
+                        if (indexPlaces == "")
                         {
-                            returnString = i.ToString();
+                            indexPlaces = i.ToString();
                         }
                         else
                         {
-                            returnString += "," + i;
+                            indexPlaces += "," + i;
                         }
                     }
                 }
             }
 
-            return returnString;
+            return indexPlaces;
         }
         public static bool RightOrWrongGuess(string letter, string word, Player player)
         {
