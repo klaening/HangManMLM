@@ -72,11 +72,13 @@ namespace HangMan
                 AddPoints(player);
                 GFX.Display.WinDisplay(player);
 
-                Helpers.Colors.Grey("\nDo you want to play again? Y/N: ");
-                string answer = Console.ReadLine();
+                string answer;
 
                 do
                 {
+                    Helpers.Colors.Grey("\nDo you want to play again? Y/N: ");
+                    answer = Console.ReadLine();
+
                     switch (answer.ToUpper())
                     {
                         case "Y":
@@ -91,7 +93,9 @@ namespace HangMan
                             break;
 
                         default:
-                            Console.WriteLine("Wrong input!");
+                            //Console.WriteLine("Wrong input!");
+                            Helpers.Messages.ErrorMessage("Wrong input!");
+                            Console.SetCursorPosition(0, Console.CursorTop - 1);
                             break;
                     } 
                 } while (answer.ToUpper() != "Y" && answer.ToUpper() != "N");
