@@ -14,10 +14,12 @@ namespace HangMan
         public static string[] CreateHiddenWordArray(string word)
         {
             string[] hiddenWord = new string[word.Length];
+
             for (int i = 0; i < hiddenWord.Length; i++)
             {
                 hiddenWord[i] = "_";
             }
+
             return hiddenWord;
         }
 

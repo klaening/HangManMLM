@@ -8,6 +8,82 @@ namespace HangManTest
 {
     public class GuessTest
     {
+        [Test]
+        public void CheckLetter_GivenCorrectLowerCaseLetter_ReturnsLetter()
+        {
+            // Arrange
+            string letter = "b";
 
+            // Act
+            string answer = Guess.CheckLetter(letter);
+
+            // Assert
+            Assert.AreEqual(letter, answer);
+        }
+
+        [Test]
+        public void CheckLetter_GivenCorrectUpperCaseLetter_ReturnsLetter()
+        {
+            // Arrange
+            string letter = "B";
+
+            // Act
+            string answer = Guess.CheckLetter(letter);
+
+            // Assert
+            Assert.AreEqual(letter, answer);
+        }
+
+        [Test]
+        public void CheckLetter_GivenInvalidLetter_ReturnsEmptyString()
+        {
+            // Arrange
+            string letter = "Ö";
+
+            // Act
+            string answer = Guess.CheckLetter(letter);
+
+            // Assert
+            Assert.IsEmpty(answer);
+        }
+
+        [Test]
+        public void CheckLetter_GivenWhiteSpace_ReturnsEmptyString()
+        {
+            // Arrange
+            string letter = " ";
+
+            // Act
+            string answer = Guess.CheckLetter(letter);
+
+            // Assert
+            Assert.IsEmpty(answer);
+        }
+
+        [Test]
+        public void CheckLetter_GivenNumbers_ReturnsEmptyString()
+        {
+            // Arrange
+            string letter = "2";
+
+            // Act
+            string answer = Guess.CheckLetter(letter);
+
+            // Assert
+            Assert.IsEmpty(answer);
+        }
+
+        [Test]
+        public void CheckLetter_GivenEmptyString_ReturnsEmptyString()
+        {
+            // Arrange
+            string letter = "";
+
+            // Act
+            string answer = Guess.CheckLetter(letter);
+
+            // Assert
+            Assert.IsEmpty(answer);
+        }
     }
 }

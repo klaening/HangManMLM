@@ -3,7 +3,7 @@ using HangMan;
 
 namespace HangManTest
 {
-    public class Tests
+    public class PlayerTest
     {
         [Test]
         public void CheckName_GivenName_ReturnsTrue()

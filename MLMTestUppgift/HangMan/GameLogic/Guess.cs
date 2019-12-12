@@ -33,20 +33,22 @@ namespace HangMan
             else
             {
                 letter = CheckLetter(letter);
+
+                if (letter == string.Empty)
+                {
+                    Helpers.Messages.ErrorMessage("\nInvalid character!");
+                }
             }
 
             return letter;
         }
 
-        private static string CheckLetter(string letter)
+        public static string CheckLetter(string letter)
         {
             Regex validCharacters = new Regex("^[a-zA-Z]$");
 
             if (!validCharacters.IsMatch(letter))
             {
-                Console.WriteLine();
-                Helpers.Messages.ErrorMessage("Invalid character!");
-
                 letter = string.Empty;
             }
             else

@@ -93,5 +93,65 @@ namespace HangManTest
         }
 
         #endregion
+
+        #region ReturnIndexPlace
+
+        [Test]
+        public void ReturnIndexPlace_GivenLowerCaseLetterInUpperCaseWord_ReturnsIndexPlace()
+        {
+            // Arrange
+            string letter = "o";
+            string word = "WORD";
+
+            // Act
+            string indexPlaces = Game.ReturnIndexPlace(letter, word);
+
+            // Assert
+            Assert.AreEqual("1", indexPlaces);
+        }
+
+        [Test]
+        public void ReturnIndexPlace_GivenUpperCaseLetterInUpperCaseWord_ReturnsIndexPlace()
+        {
+            // Arrange
+            string letter = "O";
+            string word = "WORD";
+
+            // Act
+            string indexPlaces = Game.ReturnIndexPlace(letter, word);
+
+            // Assert
+            Assert.AreEqual("1", indexPlaces);
+        }
+
+        [Test]
+        public void ReturnIndexPlace_GivenLowerCaseLetterInLowerCaseWord_ReturnsEmptyString()
+        {
+            // Arrange
+            string letter = "o";
+            string word = "word";
+
+            // Act
+            string indexPlaces = Game.ReturnIndexPlace(letter, word);
+
+            // Assert
+            Assert.AreEqual(string.Empty, indexPlaces);
+        }
+
+        [Test]
+        public void ReturnIndexPlace_GivenUpperCaseLetterInLowerCaseWord_ReturnsEmptyString()
+        {
+            // Arrange
+            string letter = "O";
+            string word = "word";
+
+            // Act
+            string indexPlaces = Game.ReturnIndexPlace(letter, word);
+
+            // Assert
+            Assert.AreEqual(string.Empty, indexPlaces);
+        }
+
+        #endregion
     }
 }

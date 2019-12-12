@@ -157,7 +157,7 @@ namespace HangMan
             }
         }
 
-        private static string ReturnIndexPlace(string aLetter, string word)
+        public static string ReturnIndexPlace(string aLetter, string word)
         {
             string capitalLetter = aLetter.ToUpper();
             char letter = Convert.ToChar(capitalLetter);
