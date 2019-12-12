@@ -8,10 +8,12 @@ namespace HangManTest
 {
     public class GameTest
     {
+        #region RightOrWrongGuessTest
+
         [Test]
         public void RightOrWrongGuess_GivenRightLetterLowerCase_ReturnsFalse()
         {
-            // Assign
+            // Arrange
             string letter = "l";
             string word = "POLICY";
             Player player = new Player();
@@ -26,7 +28,7 @@ namespace HangManTest
         [Test]
         public void RightOrWrongGuess_GivenRightLetterUpperCase_ReturnsTrue()
         {
-            // Assign
+            // Arrange
             string letter = "L";
             string word = "POLICY";
             Player player = new Player();
@@ -41,7 +43,7 @@ namespace HangManTest
         [Test]
         public void RightOrWrongGuess_GivenWrongLetterUpperCase_ReturnsFalse()
         {
-            // Assign
+            // Arrange
             string letter = "K";
             string word = "POLICY";
             Player player = new Player();
@@ -56,7 +58,7 @@ namespace HangManTest
         [Test]
         public void RightOrWrongGuess_GivenNumber_ReturnsFalse()
         {
-            // Assign
+            // Arrange
             string letter = "5";
             string word = "POLICY";
             Player player = new Player();
@@ -67,5 +69,9 @@ namespace HangManTest
             // Assert
             Assert.IsFalse(answer);
         }
+
+        #endregion
+
+
     }
 }

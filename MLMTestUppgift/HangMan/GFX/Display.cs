@@ -83,7 +83,7 @@ namespace HangMan.GFX
             }
 
             Helpers.Colors.Grey("\n\nPress enter to go back to main menu");
-            EnterToStart();
+            Helpers.Messages.PressEnterToContinue();
         }
 
         internal static void InitialUpdate(string[] hiddenLetters, Player player)
@@ -106,11 +106,6 @@ namespace HangMan.GFX
             Console.WriteLine($"\n\nYour current score: " + player.score);
         }
 
-        private static void PlayerInfo(Player player)
-        {
-            Helpers.Colors.Grey($"Player: {player.Name}\n" + $"Score: {player.score}");
-        }
-
         public static void LoseDisplay(Player player, string randomWord)
         {
             Console.WriteLine("");
@@ -121,6 +116,11 @@ namespace HangMan.GFX
 
             Console.WriteLine("\n\nYour total score was: " + player.score);
             Console.WriteLine("Secret word was: " + randomWord.ToUpper());
+        }
+
+        private static void PlayerInfo(Player player)
+        {
+            Helpers.Colors.Grey($"Player: {player.Name}\n" + $"Score: {player.score}");
         }
 
         public static void ChangeHiddenLetters(ref string[] hiddenLetters, string indexPlaces, string letter, Player player)
@@ -191,21 +191,6 @@ namespace HangMan.GFX
             {
                 Console.Write("\b");
             }
-        }
-
-        public static void EnterToStart()
-        {
-            ConsoleKeyInfo info;
-
-            do
-            {
-                info = Console.ReadKey();
-                if (info.Key != ConsoleKey.Enter)
-                {
-                    Console.Write("\b \b");
-                }
-
-            } while (info.Key != ConsoleKey.Enter);
         }
     }
 }

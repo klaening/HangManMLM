@@ -39,5 +39,20 @@ namespace HangMan.Helpers
 
             Console.SetCursorPosition(0, Console.CursorTop);
         }
+
+        public static void PressEnterToContinue()
+        {
+            ConsoleKeyInfo info;
+
+            do
+            {
+                info = Console.ReadKey();
+                if (info.Key != ConsoleKey.Enter)
+                {
+                    Console.Write("\b \b");
+                }
+
+            } while (info.Key != ConsoleKey.Enter);
+        }
     }
 }

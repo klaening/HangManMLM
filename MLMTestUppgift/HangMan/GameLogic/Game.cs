@@ -101,7 +101,7 @@ namespace HangMan
                 GFX.Display.LoseDisplay(player, randomWord);
 
                 Helpers.Colors.Grey("\nPress enter to go to main menu");
-                GFX.Display.EnterToStart();
+                Helpers.Messages.PressEnterToContinue();
 
                 Lists.SaveHighScore(player);
                 player.score = 0;

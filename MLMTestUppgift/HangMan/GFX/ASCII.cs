@@ -40,8 +40,8 @@ namespace HangMan.GFX
 
 ");
 Helpers.Colors.Green("                                                                    Press Enter to start");
+            Helpers.Messages.PressEnterToContinue();
 
-            Display.EnterToStart();
             Console.Clear();
             Console.SetWindowSize(44, 25);
         }

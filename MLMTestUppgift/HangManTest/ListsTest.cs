@@ -10,15 +10,13 @@ namespace HangManTest
     {
         public void CreateHiddenWordArray_GivenWord_ReturnsLengthOfWord()
         {
-            // Assign
+            // Arrange
 
 
             // Act
 
 
             // Assert
-
-
         }
     }
 }

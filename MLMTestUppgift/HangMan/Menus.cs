@@ -56,8 +56,7 @@ namespace HangMan
             Console.WriteLine($"Your high score: \n");
 
             Helpers.Colors.Grey("\nPress enter to start game");
-
-            GFX.Display.EnterToStart();
+            Helpers.Messages.PressEnterToContinue();
 
             Game.StartGame(player);
         }
