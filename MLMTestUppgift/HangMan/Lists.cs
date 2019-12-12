@@ -21,22 +21,21 @@ namespace HangMan
             return hiddenWord;
         }
 
-        public static string GetRandomWord()
+        public static string GetRandomWord(dynamic rnd)
         {
             string randomWord = string.Empty;
-            string[] wordArray = File.ReadAllLines("Words.txt");
+            string[] allWords = File.ReadAllLines("Words.txt");
 
-            Random rnd = new Random();
-            int word = rnd.Next(0, wordArray.Length);
+            int indexPlace = rnd.Next(0, allWords.Length);
 
-            for (int i = 0; i <= wordArray.Length; i++)
+            for (int i = 0; i <= allWords.Length; i++)
             {
-                if (word == i)
+                if (indexPlace == i)
                 {
-                    randomWord = wordArray[i];
+                    randomWord = allWords[i];
                 }
             }
-            return randomWord;
+            return randomWord.ToUpper();
         }
 
         public static string GetHighScore()

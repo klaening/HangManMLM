@@ -14,8 +14,9 @@ namespace HangManTest
         public void RightOrWrongGuess_GivenRightLetterLowerCase_ReturnsFalse()
         {
             // Arrange
-            string letter = "l";
-            string word = "POLICY";
+            FakeRandom rnd = new FakeRandom();
+            string letter = "a";
+            string word = Lists.GetRandomWord(rnd); // returns word "according"
             Player player = new Player();
 
             // Act
@@ -29,8 +30,9 @@ namespace HangManTest
         public void RightOrWrongGuess_GivenRightLetterUpperCase_ReturnsTrue()
         {
             // Arrange
-            string letter = "L";
-            string word = "POLICY";
+            FakeRandom rnd = new FakeRandom();
+            string letter = "A";
+            string word = Lists.GetRandomWord(rnd); // returns word "according"
             Player player = new Player();
 
             // Act
@@ -44,8 +46,9 @@ namespace HangManTest
         public void RightOrWrongGuess_GivenWrongLetterUpperCase_ReturnsFalse()
         {
             // Arrange
+            FakeRandom rnd = new FakeRandom();
             string letter = "K";
-            string word = "POLICY";
+            string word = Lists.GetRandomWord(rnd); // returns word "according"
             Player player = new Player();
 
             // Act
@@ -59,8 +62,9 @@ namespace HangManTest
         public void RightOrWrongGuess_GivenNumber_ReturnsFalse()
         {
             // Arrange
+            FakeRandom rnd = new FakeRandom();
             string letter = "5";
-            string word = "POLICY";
+            string word = Lists.GetRandomWord(rnd); // returns word "according"
             Player player = new Player();
 
             // Act
@@ -72,6 +76,22 @@ namespace HangManTest
 
         #endregion
 
+        #region GetRandomWordTest
 
+        [Test]
+        public void GetRandomWord_RandomReturns5_ReturnsAccording()
+        {
+            // Arrange
+            FakeRandom rnd = new FakeRandom();
+            string returnWord = "ACCORDING";
+
+            // Act
+            string answer = Lists.GetRandomWord(rnd);
+
+            // Assert
+            Assert.AreEqual(returnWord, answer);
+        }
+
+        #endregion
     }
 }

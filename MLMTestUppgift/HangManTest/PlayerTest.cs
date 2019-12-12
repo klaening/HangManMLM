@@ -6,7 +6,7 @@ namespace HangManTest
     public class Tests
     {
         [Test]
-        public void CreatePlayer_GivenName_ReturnsTrue()
+        public void CheckName_GivenName_ReturnsTrue()
         {
             // Arrange
             string name = "Lollo";
@@ -19,7 +19,7 @@ namespace HangManTest
         }
 
         [Test]
-        public void CreatePlayer_GivenInvalidCharacters_ReturnsFalse()
+        public void CheckName_GivenInvalidCharacters_ReturnsFalse()
         {
             // Arrange
             string name = "/";
@@ -32,7 +32,7 @@ namespace HangManTest
         }
 
         [Test]
-        public void CreatePlayer_GivenNameWithNumbers_ReturnsTrue()
+        public void CheckName_GivenNameWithNumbers_ReturnsTrue()
         {
             // Arrange
             string name = "Lollo4";
@@ -45,7 +45,7 @@ namespace HangManTest
         }
 
         [Test]
-        public void CreatePlayer_GivenCharacterOutsideOfRegEx_ReturnsFalse()
+        public void CheckName_GivenCharacterOutsideOfRegEx_ReturnsFalse()
         {
             // Arrange
             string name = "Lollo4*£";
@@ -58,7 +58,7 @@ namespace HangManTest
         }
 
         [Test]
-        public void CreatePlayer_GivenEmptyString_ReturnsFalse()
+        public void CheckName_GivenEmptyString_ReturnsFalse()
         {
             // Arrange
             string name = string.Empty;
@@ -71,7 +71,7 @@ namespace HangManTest
         }
 
         [Test]
-        public void CreatePlayer_GivenBlanks_ReturnsFalse()
+        public void CheckName_GivenBlanks_ReturnsFalse()
         {
             // Arrange
             string name = "Lollo 4";
@@ -84,7 +84,7 @@ namespace HangManTest
         }
 
         [Test]
-        public void CreatePlayer_GivenWhiteSpace_ReturnsFalse()
+        public void CheckName_GivenWhiteSpace_ReturnsFalse()
         {
             // Arrange
             string name = string.Empty;

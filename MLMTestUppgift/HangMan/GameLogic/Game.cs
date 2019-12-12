@@ -11,6 +11,8 @@ namespace HangMan
     {
         public static int ctr = 1;
 
+        public static dynamic rnd = new Random();
+
         public static void StartGame(Player player)
         {
             Console.Title = "Word #" + ctr;
@@ -18,7 +20,7 @@ namespace HangMan
             player.lives = 10;
             Lists.guessedLetters.Clear();
 
-            string randomWord = Lists.GetRandomWord();
+            string randomWord = Lists.GetRandomWord(rnd);
 
             string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);
 
@@ -157,7 +159,8 @@ namespace HangMan
 
         private static string ReturnIndexPlace(string aLetter, string word)
         {
-            char letter = Convert.ToChar(aLetter);
+            string capitalLetter = aLetter.ToUpper();
+            char letter = Convert.ToChar(capitalLetter);
             string indexPlaces = string.Empty;
 
             if (word.Contains(letter))
@@ -182,7 +185,8 @@ namespace HangMan
         }
         public static bool RightOrWrongGuess(string letter, string word, Player player)
         {
-            if (!word.Contains(letter))
+            string capitolLetter = letter.ToUpper();
+            if (!word.Contains(capitolLetter))
             {
                 player.lives--;
             }
