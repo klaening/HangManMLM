@@ -386,5 +386,84 @@ namespace HangManTest
         }
 
         #endregion
+
+        #region ChangeHiddenLetters
+
+        [Test]
+        public void ChangeHiddenLetters_GivenIndexPlaces_ReturnTrue()
+        {
+            // Arrange
+            string[] hiddenLetters = { "_", "_", "_", "_", "_", "_" };
+            string indexPlaces = "1";
+            string letter = "A";
+
+            // Act
+            bool answer = Game.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+
+            // Assert
+            Assert.IsTrue(answer);
+        }
+
+        [Test]
+        public void ChangeHiddenLetters_GivenNoIndexPlaces_ReturnFalse()
+        {
+            // Arrange
+            string[] hiddenLetters = { "_", "_", "_", "_", "_", "_" };
+            string indexPlaces = "";
+            string letter = "A";
+
+            // Act
+            bool answer = Game.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+
+            // Assert
+            Assert.IsFalse(answer);
+        }
+
+        [Test]
+        public void ChangeHiddenLetters_GivenMultipleIndexPlaces_ReturnTrue()
+        {
+            // Arrange
+            string[] hiddenLetters = { "_", "_", "_", "_", "_", "_" };
+            string indexPlaces = "1,3";
+            string letter = "A";
+
+            // Act
+            bool answer = Game.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+
+            // Assert
+            Assert.IsTrue(answer);
+        }
+
+        [Test]
+        public void ChangeHiddenLetters_GivenIndexPlaces_HiddenLettersContainsGivenLetter()
+        {
+            // Arrange
+            string[] hiddenLetters = { "_", "_", "_", "_", "_", "_" };
+            string indexPlaces = "1,3";
+            string letter = "A";
+
+            // Act
+            Game.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+
+            // Assert
+            Assert.Contains(letter, hiddenLetters);
+        }
+
+        [Test]
+        public void ChangeHiddenLetters_GivenIndexPlaces_HiddenLettersHasLetterAtSpecificIndexPlace()
+        {
+            // Arrange
+            string[] hiddenLetters = { "_", "_", "_", "_", "_", "_" };
+            string indexPlaces = "1,3";
+            string letter = "A";
+
+            // Act
+            Game.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+
+            // Assert
+            Assert.AreEqual(hiddenLetters[1], hiddenLetters[3], letter);
+        }
+
+        #endregion
     }
 }

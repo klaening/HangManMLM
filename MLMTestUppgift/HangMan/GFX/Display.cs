@@ -123,32 +123,6 @@ namespace HangMan.GFX
             Helpers.Colors.Grey($"Player: {player.Name}\n" + $"Score: {player.score}");
         }
 
-        public static void ChangeHiddenLetters(ref string[] hiddenLetters, string indexPlaces, string letter, Player player)
-        {
-            string[] indexString = indexPlaces.Split(',');
-            int[] indexInt = new int[indexString.Length];
-
-            if (indexPlaces != "")
-            {
-                for (int i = 0; i < indexInt.Length; i++)
-                {
-                    indexInt[i] = int.Parse(indexString[i]);
-                }
-
-                for (int i = 0; i < hiddenLetters.Length; i++)
-                {
-                    for (int j = 0; j < indexInt.Length; j++)
-                    {
-                        if (i == indexInt[j])
-                        {
-                            hiddenLetters[i] = letter.ToUpper();
-                            UpdateDisplay(Lists.guessedLetters, hiddenLetters, player);
-                        }
-                    }
-                }
-            }
-        }
-
         private static void PrintHiddenLetters(string[] hiddenLetters)
         {
             StartPrintingFrom(hiddenLetters);

@@ -53,7 +53,13 @@ namespace HangMan
                 string indexPlaces = ReturnIndexPlace(letter, randomWord);
 
                 GFX.Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters, player);
-                GFX.Display.ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter, player);
+                bool updateArray = ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
+
+                if (updateArray)
+                {
+                    GFX.Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters, player);
+                }
+
                 if (!hiddenLetters.Contains("_"))
                 {
                     win = true;
@@ -180,6 +186,39 @@ namespace HangMan
 
             return indexPlaces;
         }
+
+        public static bool ChangeHiddenLetters(ref string[] hiddenLetters, string indexPlaces, string letter)
+        {
+            string[] indexString = indexPlaces.Split(',');
+            int[] indexInt = new int[indexString.Length];
+
+            bool updatedArray = false;
+
+            if (indexPlaces != "")
+            {
+                updatedArray = true;
+
+                // Skapar en int array av de indexplatser vi får in som string
+                for (int i = 0; i < indexInt.Length; i++)
+                {
+                    indexInt[i] = int.Parse(indexString[i]);
+                }
+
+                for (int i = 0; i < hiddenLetters.Length; i++)
+                {
+                    for (int j = 0; j < indexInt.Length; j++)
+                    {
+                        if (i == indexInt[j])
+                        {
+                            hiddenLetters[i] = letter.ToUpper();
+                        }
+                    }
+                }
+            }
+
+            return updatedArray;
+        }
+
         public static bool RightOrWrongGuess(string letter, string word, Player player)
         {
             string capitalLetter = letter.ToUpper();
@@ -191,5 +230,6 @@ namespace HangMan
 
             return word.Contains(letter);
         }
+
     }
 }
