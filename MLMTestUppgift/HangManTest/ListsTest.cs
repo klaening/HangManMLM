@@ -22,16 +22,19 @@ namespace HangManTest
         }
 
         [Test]
-        public void CreateHiddenWordArray_GivenWord_ReturnsArrayWithUnderscores()
+        public void CreateHiddenWordArray_GivenWord_ReturnsArrayWithOnlyUnderscores()
         {
             // Arrange
             string word = "word";
-
+            string underScore = "_";
             // Act
             string[] answer = Lists.CreateHiddenWordArray(word);
 
             // Assert
-            Assert.Contains("_", answer);
+            for (int i = 0; i < word.Length; i++)
+            {
+                Assert.AreEqual(underScore, answer[i]);
+            }
         }
     }
 }

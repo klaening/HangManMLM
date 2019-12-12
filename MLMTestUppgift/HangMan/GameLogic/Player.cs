@@ -53,8 +53,6 @@ namespace HangMan
                 if (!validName)
                 {
                     Helpers.Messages.ErrorMessage("Invalid name");
-                    Console.Clear();
-                    CreatePlayer();
                 }
                 else
                 {
@@ -72,7 +70,6 @@ namespace HangMan
 
         public static bool CheckName(string name)
         {
-            //Namn får inte vara hur långt som helst. 10 karaktärer kanske?
             if (!validCharacters.IsMatch(name) || name.Length > 10)
             {
                 return false;

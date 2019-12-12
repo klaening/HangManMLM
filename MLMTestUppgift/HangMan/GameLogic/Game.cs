@@ -117,7 +117,7 @@ namespace HangMan
             }
         }
 
-        private static void AddPoints(Player player)
+        public static void AddPoints(Player player)
         {
             switch (player.lives)
             {
@@ -151,9 +151,6 @@ namespace HangMan
                 case 1:
                     player.score += 20;
                     break;
-                case 0:
-                    player.score += 0;
-                    break;
             }
         }
 
@@ -185,8 +182,9 @@ namespace HangMan
         }
         public static bool RightOrWrongGuess(string letter, string word, Player player)
         {
-            string capitolLetter = letter.ToUpper();
-            if (!word.Contains(capitolLetter))
+            string capitalLetter = letter.ToUpper();
+
+            if (!word.Contains(capitalLetter))
             {
                 player.lives--;
             }
