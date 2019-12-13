@@ -121,13 +121,13 @@ namespace HangManTest
         {
             // Arrange
             FakeRandom rnd = new FakeRandom();
-            string returnWord = "ACCORDING";
+            string expectedWord = "ACCORDING";
 
             // Act
             string answer = Lists.GetRandomWord(rnd);
 
             // Assert
-            Assert.AreEqual(returnWord, answer);
+            Assert.AreEqual(expectedWord, answer);
         }
 
         #endregion

@@ -35,20 +35,7 @@ namespace HangManTest
         }
 
         [Test]
-        public void CheckLetter_GivenInvalidLetter_ReturnsEmptyString()
-        {
-            // Arrange
-            string letter = "Ö";
-
-            // Act
-            string answer = Guess.CheckLetter(letter);
-
-            // Assert
-            Assert.IsEmpty(answer);
-        }
-
-        [Test]
-        public void CheckLetter_GivenWhiteSpace_ReturnsEmptyString()
+        public void CheckLetter_GivenInvalidLetter_ThrowsException()
         {
             // Arrange
             string letter = " ";
@@ -57,11 +44,24 @@ namespace HangManTest
             string answer = Guess.CheckLetter(letter);
 
             // Assert
-            Assert.IsEmpty(answer);
+            Assert.Throws<Exception>(()=>Guess.CheckLetter(letter));
         }
 
         [Test]
-        public void CheckLetter_GivenNumbers_ReturnsEmptyString()
+        public void CheckLetter_GivenWhiteSpace_ThrowsException()
+        {
+            // Arrange
+            string letter = " ";
+
+            // Act
+            string answer = Guess.CheckLetter(letter);
+
+            // Assert
+            Assert.Throws<Exception>(() => Guess.CheckLetter(letter));
+        }
+
+        [Test]
+        public void CheckLetter_GivenNumbers_ThrowsException()
         {
             // Arrange
             string letter = "2";
@@ -70,11 +70,11 @@ namespace HangManTest
             string answer = Guess.CheckLetter(letter);
 
             // Assert
-            Assert.IsEmpty(answer);
+            Assert.Throws<Exception>(() => Guess.CheckLetter(letter));
         }
 
         [Test]
-        public void CheckLetter_GivenEmptyString_ReturnsEmptyString()
+        public void CheckLetter_GivenEmptyString_ThrowsException()
         {
             // Arrange
             string letter = "";
@@ -83,7 +83,7 @@ namespace HangManTest
             string answer = Guess.CheckLetter(letter);
 
             // Assert
-            Assert.IsEmpty(answer);
+            Assert.Throws<Exception>(()=> Guess.CheckLetter(letter));
         }
     }
 }

@@ -13,6 +13,8 @@ namespace HangMan
 
         public static dynamic rnd = new Random();
 
+        public static string randomWord;
+
         public static void StartGame(Player player)
         {
             Console.Title = "Word #" + ctr;
@@ -20,7 +22,7 @@ namespace HangMan
             player.lives = 10;
             Lists.guessedLetters.Clear();
 
-            string randomWord = Lists.GetRandomWord(rnd);
+            randomWord = Lists.GetRandomWord(rnd);
 
             string[] hiddenLetters = Lists.CreateHiddenWordArray(randomWord);
 
@@ -30,7 +32,7 @@ namespace HangMan
 
             do
             {
-                ConsoleKey info;
+                ConsoleKeyInfo info;
                 string letter = string.Empty;
 
                 Console.WriteLine("Choose a letter to guess");
@@ -40,7 +42,7 @@ namespace HangMan
                     info = Guess.GuessLetter();
                     letter = Guess.ValidateLetter(info, ref letter);
 
-                } while (info != ConsoleKey.Enter || letter == string.Empty);
+                } while (info.Key != ConsoleKey.Enter || letter == string.Empty);
 
                 RightOrWrongGuess(letter, randomWord, player);
 
@@ -52,12 +54,12 @@ namespace HangMan
 
                 string indexPlaces = ReturnIndexPlace(letter, randomWord);
 
-                GFX.Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters, player);
+                GFX.Display.UpdateDisplay(hiddenLetters, player);
                 bool updateArray = ChangeHiddenLetters(ref hiddenLetters, indexPlaces, letter);
 
                 if (updateArray)
                 {
-                    GFX.Display.UpdateDisplay(Lists.guessedLetters, hiddenLetters, player);
+                    GFX.Display.UpdateDisplay(hiddenLetters, player);
                 }
 
                 if (!hiddenLetters.Contains("_"))
@@ -68,10 +70,10 @@ namespace HangMan
 
             } while (true);
 
-            WinOrLose(win, player, randomWord);
+            WinOrLose(win, player);
         }
 
-        private static void WinOrLose(bool win, Player player, string randomWord)
+        private static void WinOrLose(bool win, Player player)
         {
             Console.Clear();
             

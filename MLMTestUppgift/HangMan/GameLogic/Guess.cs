@@ -10,33 +10,33 @@ namespace HangMan
     public class Guess
     {
 
-        public static ConsoleKey GuessLetter()
+        public static ConsoleKeyInfo GuessLetter()
         {
-            ConsoleKeyInfo info;
-
             Console.Write("\b");
 
-            info = Console.ReadKey();
-            ConsoleKey key = info.Key;
+            ConsoleKeyInfo info = Console.ReadKey();
 
-            return key;
+            return info;
         }
 
-        public static string ValidateLetter(ConsoleKey key, ref string letter)
+        public static string ValidateLetter(ConsoleKeyInfo key, ref string letter)
         {
             Console.Write("\b");
 
-            if (key != ConsoleKey.Enter)
+            if (key.Key != ConsoleKey.Enter)
             {
-                letter = key.ToString().ToLower();
+                letter = key.KeyChar.ToString().ToLower();
             }
             else
             {
-                letter = CheckLetter(letter);
-
-                if (letter == string.Empty)
+                try
+                {
+                    letter = CheckLetter(letter);
+                }
+                catch
                 {
                     Helpers.Messages.ErrorMessage("\nInvalid character!");
+                    letter = string.Empty;
                 }
             }
 
@@ -49,7 +49,7 @@ namespace HangMan
 
             if (!validCharacters.IsMatch(letter))
             {
-                letter = string.Empty;
+                throw new Exception();
             }
             else
             {

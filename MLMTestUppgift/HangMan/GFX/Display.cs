@@ -5,14 +5,14 @@ namespace HangMan.GFX
 {
     public static class Display
     {
-        internal static void UpdateDisplay(List<char> letters, string[] hiddenLetters, Player player)
+        internal static void UpdateDisplay(string[] hiddenLetters, Player player)
         {
             Console.Clear();
 
             PlayerInfo(player);
             HowManyLivesLeft(player);
             PrintHiddenLetters(hiddenLetters);
-            GuessedLetters(letters);
+            GuessedLetters();
         }
 
         public static void HowManyLivesLeft(Player player)
@@ -134,10 +134,10 @@ namespace HangMan.GFX
             Helpers.Colors.Grey("\n\n____________________________________________\n");
         }
 
-        static void GuessedLetters(List<char> letters)
+        static void GuessedLetters()
         {
             Console.Write("  ");
-            foreach (var letter in letters)
+            foreach (var letter in Lists.guessedLetters)
             {
                 Console.Write(letter + "  ");
             }
