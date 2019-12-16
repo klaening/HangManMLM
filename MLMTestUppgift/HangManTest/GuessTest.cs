@@ -40,9 +40,6 @@ namespace HangManTest
             // Arrange
             string letter = " ";
 
-            // Act
-            string answer = Guess.CheckLetter(letter);
-
             // Assert
             Assert.Throws<Exception>(()=>Guess.CheckLetter(letter));
         }
@@ -52,9 +49,6 @@ namespace HangManTest
         {
             // Arrange
             string letter = " ";
-
-            // Act
-            string answer = Guess.CheckLetter(letter);
 
             // Assert
             Assert.Throws<Exception>(() => Guess.CheckLetter(letter));
@@ -66,9 +60,6 @@ namespace HangManTest
             // Arrange
             string letter = "2";
 
-            // Act
-            string answer = Guess.CheckLetter(letter);
-
             // Assert
             Assert.Throws<Exception>(() => Guess.CheckLetter(letter));
         }
@@ -78,9 +69,6 @@ namespace HangManTest
         {
             // Arrange
             string letter = "";
-
-            // Act
-            string answer = Guess.CheckLetter(letter);
 
             // Assert
             Assert.Throws<Exception>(()=> Guess.CheckLetter(letter));
