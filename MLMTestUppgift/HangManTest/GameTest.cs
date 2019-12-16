@@ -16,7 +16,7 @@ namespace HangManTest
             // Arrange
             FakeRandom rnd = new FakeRandom(); // returns int 5
             string letter = "a";
-            string word = Lists.GetRandomWord(rnd); // returns word "according"
+            string word = Lists.GetRandomWord(rnd); // returns word "ACCORDING"
             Player player = new Player();
 
             // Act
@@ -32,7 +32,7 @@ namespace HangManTest
             // Arrange
             FakeRandom rnd = new FakeRandom(); // returns int 5
             string letter = "A";
-            string word = Lists.GetRandomWord(rnd); // returns word "according"
+            string word = Lists.GetRandomWord(rnd); // returns word "ACCORDING"
             Player player = new Player();
 
             // Act
@@ -48,7 +48,7 @@ namespace HangManTest
             // Arrange
             FakeRandom rnd = new FakeRandom(); // returns int 5
             string letter = "K";
-            string word = Lists.GetRandomWord(rnd); // returns word "according"
+            string word = Lists.GetRandomWord(rnd); // returns word "ACCORDING"
             Player player = new Player();
 
             // Act
@@ -64,7 +64,7 @@ namespace HangManTest
             // Arrange
             FakeRandom rnd = new FakeRandom(); // returns int 5
             string letter = "5";
-            string word = Lists.GetRandomWord(rnd); // returns word "according"
+            string word = Lists.GetRandomWord(rnd); // returns word "ACCORDING"
             Player player = new Player();
 
             // Act
@@ -80,8 +80,8 @@ namespace HangManTest
             // Arrange
             FakeRandom rnd = new FakeRandom(); // returns int 5
             string letter = "b";
-            string word = Lists.GetRandomWord(rnd); // returns word "according"
-            
+            string word = Lists.GetRandomWord(rnd); // returns word "ACCORDING"
+
             Player player = new Player();
             player.lives = 10;
             int expectedLivesLeft = 9;
@@ -99,7 +99,7 @@ namespace HangManTest
             // Arrange
             FakeRandom rnd = new FakeRandom(); // returns int 5
             string letter = "a";
-            string word = Lists.GetRandomWord(rnd); // returns word "according"
+            string word = Lists.GetRandomWord(rnd); // returns word "ACCORDING"
 
             Player player = new Player();
             player.lives = 10;
@@ -120,7 +120,7 @@ namespace HangManTest
         public void GetRandomWord_RandomReturns5_ReturnsAccording()
         {
             // Arrange
-            FakeRandom rnd = new FakeRandom();
+            FakeRandom rnd = new FakeRandom(); // returns int 5
             string expectedWord = "ACCORDING";
 
             // Act
